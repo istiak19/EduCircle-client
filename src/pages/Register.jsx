@@ -1,20 +1,22 @@
 import Lottie from "lottie-react";
-import login from '../assets/lottie/login.json'
-import { Link } from "react-router-dom";
-import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa6";
+import register from '../assets/lottie/register.json'
 import { useState } from "react";
+import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
     const [errorMsg, setErrorMsg] = useState('')
     const [showPassword, setShowPassword] = useState(true)
 
-    const handleLogin = (e) => {
+    const handleRegister = (e) => {
         e.preventDefault()
         const form = new FormData(e.target)
+        const name = form.get('name')
+        const photo = form.get('photo')
         const email = form.get('email')
         const password = form.get('password')
-        const user = { email, password }
         setErrorMsg('')
+        const user = { name, photo, email, password }
 
         if (password.length < 6) {
             setErrorMsg('Password must be at least 6 characters long.')
@@ -30,20 +32,30 @@ const Login = () => {
             setErrorMsg('Password must contain at least one lowercase letter.')
             return;
         }
-
+        
         console.log(user)
     }
-
-
     return (
         <div className="hero min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
-                    <Lottie animationData={login}></Lottie>
+                    <Lottie animationData={register}></Lottie>
                 </div>
                 <div className="card bg-base-100 w-full max-w-md shrink-0 shadow-2xl">
                     <h1 className="text-4xl text-center pt-5 font-bold">Login now!</h1>
-                    <form className="card-body" onSubmit={handleLogin}>
+                    <form className="card-body" onSubmit={handleRegister}>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input type="text" placeholder="Your Name" name="name" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Photo URL</span>
+                            </label>
+                            <input type="url" placeholder="Photo URL" name="photo" className="input input-bordered" required />
+                        </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -56,14 +68,11 @@ const Login = () => {
                             </label>
                             <input type={showPassword ? 'password' : 'text'} placeholder="Password" name="password" className="input input-bordered" required />
                             <button onClick={() => setShowPassword(!showPassword)} className="absolute top-14 right-3">{showPassword ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>}</button>
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn bg-[#007bffc0] text-white">Login</button>
+                            <button className="btn bg-[#007bffc0] text-white">Register</button>
                         </div>
-                        <p>Don't have an account? <Link to='/register' className="text-[#007bffc0] border-b border-[#007bffc0]">Register</Link></p>
+                        <p>Already have an account? <Link to='/login' className="text-[#007bffc0] border-b border-[#007bffc0]">Login</Link></p>
                         {
                             errorMsg && <p>{errorMsg}</p>
                         }
@@ -82,4 +91,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;

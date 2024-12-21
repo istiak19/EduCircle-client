@@ -1,6 +1,9 @@
 import { Link, NavLink } from 'react-router-dom';
 import logoPic from '../../assets/logo/online-study-100.png'
+import useAuth from '../../Hook/useAuth';
 const Navbar = () => {
+    const { name } = useAuth()
+
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/assignments'>Assignments</NavLink></li>
