@@ -3,17 +3,19 @@ import login from '../assets/lottie/login.json'
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa6";
 import { useState } from "react";
+import useAuth from "../Hook/useAuth";
 
 const Login = () => {
     const [errorMsg, setErrorMsg] = useState('')
     const [showPassword, setShowPassword] = useState(true)
+    const { signin, googleSign } = useAuth()
 
     const handleLogin = (e) => {
         e.preventDefault()
         const form = new FormData(e.target)
         const email = form.get('email')
         const password = form.get('password')
-        const user = { email, password }
+        // const user = { email, password }
         setErrorMsg('')
 
         if (password.length < 6) {
@@ -32,6 +34,26 @@ const Login = () => {
         }
 
         console.log(user)
+        signin(email, password)
+            .then(result => {
+                console.log(result.user)
+                e.target.reset()
+            })
+            .catch(error => {
+                console.log(error.message)
+                setErrorMsg(error.message)
+            })
+    }
+
+    const handleGoogle = () => {
+        googleSign()
+            .then(result => {
+                console.log(result.user)
+            })
+            .catch(error => {
+                console.log(error.message)
+                setErrorMsg(error.message)
+            })
     }
 
 
@@ -74,7 +96,7 @@ const Login = () => {
                             <span className="text-black font-medium">Or</span>
                             <hr className="border-t-2 border-[#007bffc0] flex-grow" />
                         </div>
-                        <button className="btn border-2 border-[#007bffc0] rounded-full px-10"><FaGoogle></FaGoogle>Continue with Google</button>
+                        <button onClick={handleGoogle} className="btn border-2 border-[#007bffc0] rounded-full px-10"><FaGoogle></FaGoogle>Continue with Google</button>
                     </div>
                 </div>
             </div>

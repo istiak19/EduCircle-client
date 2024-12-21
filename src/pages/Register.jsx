@@ -3,10 +3,12 @@ import register from '../assets/lottie/register.json'
 import { useState } from "react";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import useAuth from "../Hook/useAuth";
 
 const Register = () => {
     const [errorMsg, setErrorMsg] = useState('')
     const [showPassword, setShowPassword] = useState(true)
+    const { signup, googleSign, updateProfileUser } = useAuth()
 
     const handleRegister = (e) => {
         e.preventDefault()
@@ -32,9 +34,31 @@ const Register = () => {
             setErrorMsg('Password must contain at least one lowercase letter.')
             return;
         }
-        
+
         console.log(user)
+        signup(email, password)
+            .then(result => {
+                console.log(result.user)
+                const newUser = { name, email }
+                updateProfileUser({ displayName: name, photoURL: photo })
+            })
+            .catch(error => {
+                console.log(error.message)
+                setErrorMsg(error.message)
+            })
     }
+
+    const handleGoogle = () => {
+        googleSign()
+            .then(result => {
+                console.log(result.user)
+            })
+            .catch(error => {
+                console.log(error.message)
+                setErrorMsg(error.message)
+            })
+    }
+
     return (
         <div className="hero min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -83,7 +107,7 @@ const Register = () => {
                             <span className="text-black font-medium">Or</span>
                             <hr className="border-t-2 border-[#007bffc0] flex-grow" />
                         </div>
-                        <button className="btn border-2 border-[#007bffc0] rounded-full px-10"><FaGoogle></FaGoogle>Continue with Google</button>
+                        <button onClick={handleGoogle} className="btn border-2 border-[#007bffc0] rounded-full px-10"><FaGoogle></FaGoogle>Continue with Google</button>
                     </div>
                 </div>
             </div>

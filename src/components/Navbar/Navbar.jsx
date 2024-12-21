@@ -1,14 +1,27 @@
 import { Link, NavLink } from 'react-router-dom';
 import logoPic from '../../assets/logo/online-study-100.png'
 import useAuth from '../../Hook/useAuth';
+import { FaRegUser } from 'react-icons/fa6';
 const Navbar = () => {
-    const { name } = useAuth()
+    const { user, signOutUser } = useAuth()
 
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/assignments'>Assignments</NavLink></li>
-        <li><NavLink to='/pending-assignments'>Pending Assignments</NavLink></li>
+        {
+            user && <li><NavLink to='/pending-assignments'>Pending Assignments</NavLink></li>
+        }
     </>
+
+    const handleSignOut = () => {
+        signOutUser()
+            .then(() => {
+
+            })
+            .catch((error) => {
+                // console.log(error.message)
+            })
+    }
 
     return (
         <div className="navbar bg-[#007bffc0] px-14 py-5">
@@ -51,7 +64,32 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login' className="btn">Login</Link>
+                {
+                    user && <div className="dropdown dropdown-end">
+                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                            <div title={user?.displayName} className="w-10 rounded-full">
+                                <img referrerPolicy='no-referrer'
+                                    alt="Profile Pic"
+                                    src={user?.photoURL} />
+                            </div>
+                        </div>
+                        <ul
+                            tabIndex={0}
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                            <li>
+                                <a className="justify-between">
+                                    Profile
+                                    <span className="badge">New</span>
+                                </a>
+                            </li>
+                            <li><a>Settings</a></li>
+                            <li><a>Logout</a></li>
+                        </ul>
+                    </div>
+                }
+                {
+                    user ? <button onClick={handleSignOut} className="btn bg-transparent text-white font-semibold ml-3">Logout</button> : <Link to='/login' className="btn bg-transparent text-white font-semibold">Login</Link>
+                }
             </div>
         </div>
     );
