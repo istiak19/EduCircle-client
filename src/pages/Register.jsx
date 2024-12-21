@@ -2,10 +2,12 @@ import Lottie from "lottie-react";
 import register from '../assets/lottie/register.json'
 import { useState } from "react";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
+import { toast } from "react-toastify";
 
 const Register = () => {
+    const navigate = useNavigate()
     const [errorMsg, setErrorMsg] = useState('')
     const [showPassword, setShowPassword] = useState(true)
     const { signup, googleSign, updateProfileUser } = useAuth()
@@ -39,6 +41,8 @@ const Register = () => {
         signup(email, password)
             .then(result => {
                 console.log(result.user)
+                toast.success('Successfully Register')
+                navigate('/')
                 const newUser = { name, email }
                 updateProfileUser({ displayName: name, photoURL: photo })
             })

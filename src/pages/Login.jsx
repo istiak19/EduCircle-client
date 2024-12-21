@@ -1,11 +1,13 @@
 import Lottie from "lottie-react";
 import login from '../assets/lottie/login.json'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa6";
 import { useState } from "react";
 import useAuth from "../Hook/useAuth";
+import { toast } from "react-toastify";
 
 const Login = () => {
+    const navigate = useNavigate()
     const [errorMsg, setErrorMsg] = useState('')
     const [showPassword, setShowPassword] = useState(true)
     const { signin, googleSign } = useAuth()
@@ -32,12 +34,13 @@ const Login = () => {
             setErrorMsg('Password must contain at least one lowercase letter.')
             return;
         }
-
-        console.log(user)
+        
         signin(email, password)
             .then(result => {
                 console.log(result.user)
                 e.target.reset()
+                navigate('/')
+                toast.success('Successfully login')
             })
             .catch(error => {
                 console.log(error.message)
