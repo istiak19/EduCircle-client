@@ -1,7 +1,9 @@
+import FAQ from "../components/FAQ";
+
 const Home = () => {
     return (
         <div>
-            <h2>Home</h2>
+            <FAQ></FAQ>
         </div>
     );
 };

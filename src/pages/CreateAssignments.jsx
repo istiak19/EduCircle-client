@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../Hook/useAuth";
@@ -17,11 +18,19 @@ const CreateAssignments = () => {
         const deadline = startDate
         const level = form.get('level')
         const email = user?.email
-        const newAssignment = { title, description, marks, image, deadline, level, email }
-        console.log(newAssignment)
+        const name = user?.displayName
+        const newAssignment = { title, description, marks, image, deadline, level, email, name }
+        console.log(newAssignment, name)
+        axios.post('http://localhost:5000/assignment', newAssignment)
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
-    console.log(user?.email)
+
     return (
         <div>
             <form
