@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Features = () => {
     const [features, setFeatures] = useState([])
+
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
 
     useEffect(() => {
         fetch('./features.json')
@@ -13,10 +19,10 @@ const Features = () => {
         <div className="w-11/12 mx-auto my-10">
             <h2 className="text-2xl font-semibold text-center mb-6">Key Features</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {features.map((feature, index) => (
+                {features.map((feature, idx) => (
                     <div
-                        key={index}
-                        className="border border-[#3F9CFF] rounded-lg p-4 text-center shadow-md"
+                        key={idx}
+                        className="border border-[#3F9CFF] rounded-lg p-4 text-center shadow-md" data-aos="fade-right"
                     >
                         <img
                             src={feature.icon}

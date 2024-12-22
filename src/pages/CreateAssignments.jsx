@@ -1,14 +1,17 @@
 import { useState } from "react";
 import axios from "axios";
+import Swal from 'sweetalert2';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../Hook/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const CreateAssignments = () => {
     const [startDate, setStartDate] = useState(new Date());
     const { user } = useAuth()
+    const navigate = useNavigate()
 
-    const handleSubmit = e => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         const form = new FormData(e.target)
         const title = form.get('title')
@@ -20,14 +23,24 @@ const CreateAssignments = () => {
         const email = user?.email
         const name = user?.displayName
         const newAssignment = { title, description, marks, image, deadline, level, email, name }
-        console.log(newAssignment, name)
-        axios.post('http://localhost:5000/assignment', newAssignment)
-            .then(res => {
-                console.log(res.data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+
+        try {
+            const { data } = await axios.post('http://localhost:5000/assignment', newAssignment);
+            console.log(data);
+            if (data.insertedId) {
+                Swal.fire({
+                    position: "top",
+                    icon: "success",
+                    title: "Assignment created successfully!",
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+                e.target.reset()
+                navigate('/assignments')
+            }
+        } catch (err) {
+            console.log(err);
+        }
     }
 
 
