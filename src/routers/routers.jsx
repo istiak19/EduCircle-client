@@ -9,6 +9,7 @@ import Home from "../pages/Home";
 import Assignments from "../pages/Assignments";
 import CreateAssignments from "../pages/CreateAssignments";
 import MyAttempted from "../pages/MyAttempted";
+import Details from "../pages/Details";
 
 const routers = createBrowserRouter([
     {
@@ -43,6 +44,10 @@ const routers = createBrowserRouter([
             {
                 path: '/myAttempted',
                 element: <PrivateRouter><MyAttempted></MyAttempted></PrivateRouter>
+            },
+            {
+                path: '/details/:id',
+                element: <PrivateRouter><Details></Details></PrivateRouter>
             }
         ]
     },

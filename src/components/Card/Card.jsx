@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Card = ({ assignment }) => {
     const { _id, title, description, marks, image, deadline, level, email, name } = assignment
     return (
@@ -14,7 +16,7 @@ const Card = ({ assignment }) => {
                 <div className="card-actions justify-between">
                     <button className="btn text-white hover:text-black text-xs bg-[#3F9CFF]">Delete</button>
                     <button className="btn text-white hover:text-black text-xs bg-[#3F9CFF]">Update</button>
-                    <button className="btn text-white hover:text-black text-xs bg-[#3F9CFF]">View assignment</button>
+                    <Link to={`/details/${_id}`} className="btn text-white hover:text-black text-xs bg-[#3F9CFF]">View assignment</Link>
                 </div>
             </div>
         </div>
