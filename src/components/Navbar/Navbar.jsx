@@ -1,7 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import logoPic from '../../assets/logo/online-study-100.png'
 import useAuth from '../../Hook/useAuth';
-import { FaRegUser } from 'react-icons/fa6';
 const Navbar = () => {
     const { user, signOutUser } = useAuth()
 

@@ -6,7 +6,7 @@ const MainLayout = () => {
     return (
         <div className="font-Roboto">
             <Navbar></Navbar>
-            <div className='min-h-[calc(100vh-240px)]'>
+            <div className='min-h-[calc(100vh-240px)] w-11/12 mx-auto'>
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>

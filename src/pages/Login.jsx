@@ -34,7 +34,7 @@ const Login = () => {
             setErrorMsg('Password must contain at least one lowercase letter.')
             return;
         }
-        
+
         signin(email, password)
             .then(result => {
                 console.log(result.user)
@@ -52,6 +52,7 @@ const Login = () => {
         googleSign()
             .then(result => {
                 console.log(result.user)
+                navigate('/')
             })
             .catch(error => {
                 console.log(error.message)
