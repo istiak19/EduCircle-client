@@ -4,25 +4,19 @@ import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
     return (
-        <section className='bg-white max-w-6xl mx-auto'>
+        <section className='bg-[#007bffc0] px-60'>
             <div className='container min-h-screen px-6 py-12 mx-auto lg:flex lg:items-center lg:gap-12'>
-                <div className='wf-ull lg:w-1/2'>
+                <div className='wf-ull lg:w-1/2 *:text-white'>
                     <h1>Oops!</h1>
                     <p className='mt-4'>Sorry, an unexpected error has occurred.</p>
                     <p className='mt-4'>
-                        Sorry, the page you are looking for doesn't exist.Here are some
-                        helpful links:
+                        Sorry, the page you are looking for doesn't exist. Here are some helpful link:
                     </p>
 
-                    <div className='flex items-center mt-6 gap-x-3'>
-                        <button className='flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto hover:bg-gray-100 '>
-                            <FaArrowLeftLong />
-                            <span>Go back</span>
-                        </button>
-
+                    <div className='mt-6'>
                         <Link
                             to='/'
-                            className='w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-gray-500 rounded-lg shrink-0 sm:w-auto hover:bg-gray-600'
+                            className='w-1/2 px-5 py-2 text-sm tracking-wide text-black transition-colors duration-200 bg-white rounded-lg shrink-0 sm:w-auto hover:bg-[#007bffc0] hover:text-white'
                         >
                             Take me home page
                         </Link>
