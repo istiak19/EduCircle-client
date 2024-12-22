@@ -43,12 +43,11 @@ const CreateAssignments = () => {
         }
     }
 
-
     return (
         <div>
             <form
                 onSubmit={handleSubmit}
-                className="max-w-2xl my-20 mx-auto border border-[#3F9CFF] bg-white shadow-lg p-6 rounded-xl space-y-4"
+                className="max-w-2xl my-20 mx-auto border shadow-lg p-6 rounded-xl space-y-4"
             >
                 <div>
                     <label htmlFor="title" className="block text-sm font-medium mb-2">

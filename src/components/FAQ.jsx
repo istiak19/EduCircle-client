@@ -14,34 +14,34 @@ const FAQ = () => {
             </div>
             <div className="hero">
                 <div className="hero-content flex-col gap-5 lg:flex-row">
-                    <div className="max-w-md p-3 rounded-2xl border border-[#3F9CFF] shadow-2xl">
+                    <div className="max-w-md p-3 bg-base-200 border-[#3f9cff57] rounded-2xl border border-[#3F9CFF]shadow-2xl">
                         <img
                             src="https://i.ibb.co.com/NTsVtmv/faq-concept-23-2148147094.jpg"
                             className="rounded-lg" />
                     </div>
                     <div>
-                        <div className="collapse collapse-arrow bg-base-200">
+                        <div className="collapse collapse-arrow bg-base-200 shadow-lg border border-[#3f9cff57]">
                             <input type="radio" name="my-accordion-2" defaultChecked />
                             <div className="collapse-title text-xl font-medium">What is Educircle?</div>
                             <div className="collapse-content">
                                 <p>Educircle is an online platform that allows users to collaborate in group studies by creating, completing, and grading assignments.</p>
                             </div>
                         </div>
-                        <div className="collapse collapse-arrow bg-base-200 mt-5">
+                        <div className="collapse collapse-arrow bg-base-200 mt-5 shadow-lg border border-[#3f9cff57]">
                             <input type="radio" name="my-accordion-2" />
                             <div className="collapse-title text-xl font-medium">How do I register for Educircle?</div>
                             <div className="collapse-content">
                                 <p>Click on the 'Register' button on the homepage to create an account. After registering, you can log in to access all features.</p>
                             </div>
                         </div>
-                        <div className="collapse collapse-arrow bg-base-200 mt-5">
+                        <div className="collapse collapse-arrow bg-base-200 mt-5 shadow-lg border border-[#3f9cff57]">
                             <input type="radio" name="my-accordion-2" />
                             <div className="collapse-title text-xl font-medium">Can I grade my friends' assignments?</div>
                             <div className="collapse-content">
                                 <p>Yes, all registered users are connected as friends. You can grade assignments created by your friends.</p>
                             </div>
                         </div>
-                        <div className="collapse collapse-arrow bg-base-200 mt-5">
+                        <div className="collapse collapse-arrow bg-base-200 mt-5 shadow-lg border border-[#3f9cff57]">
                             <input type="radio" name="my-accordion-2" />
                             <div className="collapse-title text-xl font-medium">Is there a deadline for assignments?</div>
                             <div className="collapse-content">

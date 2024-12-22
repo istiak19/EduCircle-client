@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Card = ({ assignment }) => {
     const { _id, title, description, marks, image, deadline, level, email, name } = assignment
     return (
-        <div className="card border border-[#3F9CFF] shadow-xl p-4 space-y-4">
+        <div className="card border border-[#3F9CFF]shadow-xl p-4 space-y-4">
             <figure>
                 <img className="h-64 rounded-xl"
                     src={image}

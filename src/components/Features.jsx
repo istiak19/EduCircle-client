@@ -22,7 +22,7 @@ const Features = () => {
                 {features.map((feature, idx) => (
                     <div
                         key={idx}
-                        className="border border-[#3F9CFF] rounded-lg p-4 text-center shadow-md" data-aos="fade-right"
+                        className="border border-[#3F9CFF]rounded-lg p-4 text-center shadow-md" data-aos="fade-right"
                     >
                         <img
                             src={feature.icon}
