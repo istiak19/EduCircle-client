@@ -6,7 +6,7 @@ import Card from "../components/Card/Card";
 const Assignments = () => {
     const { data: assignments, isError, isLoading } = useQuery({
         queryKey: ['assignments'], queryFn: async () => {
-            const { data } = await axios.get('http://localhost:5000/assignment')
+            const { data } = await axios.get('http://localhost:5000/assignments')
             return data
         }
     })
