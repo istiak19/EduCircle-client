@@ -1,4 +1,3 @@
-import pic from '../assets/faq.png';
 import { useEffect } from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -15,9 +14,11 @@ const FAQ = () => {
             </div>
             <div className="hero">
                 <div className="hero-content flex-col gap-5 lg:flex-row">
-                    <img
-                        src={pic}
-                        className="max-w-md p-8 rounded-xl border border-[#3F9CFF] shadow-2xl" />
+                    <div className="max-w-md p-3 rounded-2xl border border-[#3F9CFF] shadow-2xl">
+                        <img
+                            src="https://i.ibb.co.com/NTsVtmv/faq-concept-23-2148147094.jpg"
+                            className="rounded-lg" />
+                    </div>
                     <div>
                         <div className="collapse collapse-arrow bg-base-200">
                             <input type="radio" name="my-accordion-2" defaultChecked />

@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Collaborative Group Study",
+        "description": "Connect with friends and collaborate on assignments, creating an engaging group study environment.",
+        "icon": "https://i.ibb.co.com/jZ4XSrY/f-1.jpg"
+    },
+    {
+        "title": "Assignment Management",
+        "description": "Create, submit, and grade assignments seamlessly within the platform.",
+        "icon": "https://i.ibb.co.com/jg7dhsZ/flat-university-concept-23-2148175455.jpg"
+    },
+    {
+        "title": "Real-Time Notifications",
+        "description": "Stay updated with real-time notifications for deadlines, submissions, and grading updates.",
+        "icon": "https://i.ibb.co.com/h2SbnLr/appointment-booking-concept-with-smartphone-23-2148557912.jpg"
+    },
+    {
+        "title": "FAQ and Help",
+        "description": "Get answers to common questions with a detailed FAQ section for quick guidance.",
+        "icon": "https://i.ibb.co.com/ZGxTQ9c/faq-concept-23-2148157552.jpg"
+    },
+    {
+        "title": "User-Friendly Interface",
+        "description": "Navigate through a clean and intuitive design, making group study hassle-free.",
+        "icon": "https://i.ibb.co.com/Z68K7KY/smart-home-management-laptop-screen-app-23-2148639320.jpg"
+    },
+    {
+        "title": "Performance Tracking",
+        "description": "Track your assignment performance and grades in one place for better progress monitoring.",
+        "icon": "https://i.ibb.co.com/8gKpB8j/doctors-working-laboratory-running-call-1262-19771.jpg"
+    }
+]
