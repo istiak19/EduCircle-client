@@ -5,12 +5,13 @@ import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
 import { toast } from "react-toastify";
+import SocialAuth from "../components/Shared/SocialAuth";
 
 const Register = () => {
     const navigate = useNavigate()
     const [errorMsg, setErrorMsg] = useState('')
     const [showPassword, setShowPassword] = useState(true)
-    const { signup, googleSign, updateProfileUser } = useAuth()
+    const { signup, updateProfileUser } = useAuth()
 
     const handleRegister = (e) => {
         e.preventDefault()
@@ -52,25 +53,13 @@ const Register = () => {
             })
     }
 
-    const handleGoogle = () => {
-        googleSign()
-            .then(result => {
-                console.log(result.user)
-                navigate('/')
-            })
-            .catch(error => {
-                console.log(error.message)
-                setErrorMsg(error.message)
-            })
-    }
-
     return (
-        <div className="hero min-h-screen">
+        <div className="hero min-h-screen my-10">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <Lottie animationData={register}></Lottie>
                 </div>
-                <div className="card bg-base-100 w-full max-w-md shrink-0 shadow-2xl">
+                <div className="card bg-base-100 w-full max-w-md shrink-0 shadow-2xl border">
                     <h1 className="text-4xl text-center pt-5 font-bold">Login now!</h1>
                     <form className="card-body" onSubmit={handleRegister}>
                         <div className="form-control">
@@ -107,12 +96,8 @@ const Register = () => {
                         }
                     </form>
                     <div className="flex flex-col justify-center items-center pb-8 space-y-4">
-                        <div className="flex items-center justify-center space-x-2">
-                            <hr className="border-t-2 border-[#007bffc0] flex-grow" />
-                            <span className="text-black font-medium">Or</span>
-                            <hr className="border-t-2 border-[#007bffc0] flex-grow" />
-                        </div>
-                        <button onClick={handleGoogle} className="btn border-2 border-[#007bffc0] rounded-full px-10"><FaGoogle></FaGoogle>Continue with Google</button>
+                        <div className="divider px-8 text-[#007bffc0]">OR</div>
+                        <SocialAuth></SocialAuth>
                     </div>
                 </div>
             </div>
