@@ -16,6 +16,8 @@ const Assignments = () => {
         }
     })
 
+    // const [assignments, setAssignments] = useState(loadedData)
+
     // if (isLoading) {
     //     return <Loading></Loading>
     // }
@@ -70,7 +72,7 @@ const Assignments = () => {
             {/* Assignments card */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 my-10">
                 {assignments?.map((assignment) => (
-                    <Card key={assignment._id} assignment={assignment} />
+                    <Card key={assignment._id} assignment={assignment}></Card>
                 ))}
             </div>
         </div>
