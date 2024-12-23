@@ -50,6 +50,9 @@ const CreateAssignments = () => {
                 className="max-w-2xl my-20 mx-auto border shadow-lg p-6 rounded-xl space-y-4"
             >
                 <div>
+                    <h2 className="text-2xl font-bold mb-4 text-center">Create Assignment</h2>
+                </div>
+                <div>
                     <label htmlFor="title" className="block text-sm font-medium mb-2">
                         Title
                     </label>

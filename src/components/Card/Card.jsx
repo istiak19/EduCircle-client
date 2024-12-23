@@ -1,18 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
+import Swal from "sweetalert2";
 
-const Card = ({ assignment, setAssignments }) => {
+const Card = ({ assignment }) => {
     const { _id, title, marks, image, level, email } = assignment
     const { user } = useAuth()
+    const navigate = useNavigate()
     console.log(user?.email)
     const queryClient = useQueryClient()
 
     const handleDelete = async (id, email) => {
+        console.log('delete---->', id, email)
         if (email !== user?.email) {
-            toast.error("You can't delete this assignment !.")
+            Swal.fire({
+                position: "top",
+                icon: "error",
+                title: "You are not authorized to delete this assignment!",
+                showConfirmButton: false,
+                timer: 1500
+            });
             return;
         }
         console.log(id, email)
@@ -23,6 +32,22 @@ const Card = ({ assignment, setAssignments }) => {
         } catch (error) {
             console.log(error)
         }
+    }
+
+    const handleUpdateRedirecting = (id, email) => {
+        if (email !== user?.email) {
+            Swal.fire({
+                position: "top",
+                icon: "error",
+                title: "You are not authorized to update this assignment!",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            return;
+        }
+
+        navigate(`/update/${id}`)
+        console.log('update---->', id, email)
     }
 
     return (
@@ -38,7 +63,7 @@ const Card = ({ assignment, setAssignments }) => {
                 <p><span className="font-bold">Difficulty level: </span>{level}</p>
                 <div className="card-actions justify-between">
                     <button onClick={() => handleDelete(_id, email)} className="btn text-white text-xs bg-[#3F9CFF] hover:bg-blue-400">Delete</button>
-                    <button className="btn text-white text-xs bg-[#3F9CFF] hover:bg-blue-400">Update</button>
+                    <button onClick={() => handleUpdateRedirecting(_id, email)} className="btn text-white text-xs bg-[#3F9CFF] hover:bg-blue-400">Update</button>
                     <Link to={`/details/${_id}`} className="btn text-white text-xs bg-[#3F9CFF] hover:bg-blue-400">View assignment</Link>
                 </div>
             </div>
