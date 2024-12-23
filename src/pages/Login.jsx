@@ -1,7 +1,7 @@
 import Lottie from "lottie-react";
 import login from '../assets/lottie/login.json'
 import { Link, useNavigate } from "react-router-dom";
-import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa6";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { useState } from "react";
 import useAuth from "../Hook/useAuth";
 import { toast } from "react-toastify";
@@ -11,14 +11,13 @@ const Login = () => {
     const navigate = useNavigate()
     const [errorMsg, setErrorMsg] = useState('')
     const [showPassword, setShowPassword] = useState(true)
-    const { signin, googleSign } = useAuth()
+    const { signin } = useAuth()
 
     const handleLogin = (e) => {
         e.preventDefault()
         const form = new FormData(e.target)
         const email = form.get('email')
         const password = form.get('password')
-        // const user = { email, password }
         setErrorMsg('')
 
         if (password.length < 6) {

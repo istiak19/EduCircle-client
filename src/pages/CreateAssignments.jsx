@@ -109,6 +109,7 @@ const CreateAssignments = () => {
                             className="select select-bordered w-full"
                             required
                         >
+                            <option value="">Difficulty Level</option>
                             <option value="Easy">Easy</option>
                             <option value="Medium">Medium</option>
                             <option value="Hard">Hard</option>
@@ -126,7 +127,7 @@ const CreateAssignments = () => {
                         />
                     </div>
                 </div>
-                <button type="submit" className="btn font-medium bg-[#3F9CFF] text-white w-full">Add Assignment</button>
+                <button type="submit" className="btn font-medium bg-[#3F9CFF] text-white w-full hover:bg-blue-400">Add Assignment</button>
             </form>
         </div>
     );

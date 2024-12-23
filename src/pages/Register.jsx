@@ -1,7 +1,7 @@
 import Lottie from "lottie-react";
 import register from '../assets/lottie/register.json'
 import { useState } from "react";
-import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa6";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
 import { toast } from "react-toastify";
@@ -38,7 +38,6 @@ const Register = () => {
             return;
         }
 
-        console.log(user)
         signup(email, password)
             .then(result => {
                 console.log(result.user)

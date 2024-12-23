@@ -10,6 +10,7 @@ import Assignments from "../pages/Assignments";
 import CreateAssignments from "../pages/CreateAssignments";
 import MyAttempted from "../pages/MyAttempted";
 import Details from "../pages/Details";
+import SubmissionForm from "../pages/SubmissionForm";
 
 const routers = createBrowserRouter([
     {
@@ -49,6 +50,11 @@ const routers = createBrowserRouter([
                 path: '/details/:id',
                 loader: ({ params }) => fetch(`http://localhost:5000/assignment/${params.id}`),
                 element: <PrivateRouter><Details></Details></PrivateRouter>
+            },
+            {
+                path: '/take-assignment/:id',
+                loader: ({ params }) => fetch(`http://localhost:5000/assignment/${params.id}`),
+                element: <PrivateRouter><SubmissionForm></SubmissionForm></PrivateRouter>
             }
         ]
     },

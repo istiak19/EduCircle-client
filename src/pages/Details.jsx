@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { format } from 'date-fns';
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const Details = () => {
     //     const {data}=useQuery({queryKey: ['assignments'],  queryFn:async()=>{
@@ -24,7 +24,7 @@ const Details = () => {
                 <p><span className="font-bold">Difficulty level: </span>{level}</p>
                 <p><span className="font-bold">Deadline: </span>{deadline ? format(new Date(deadline), 'P') : 'N/A'}</p>
                 <div className="card-actions">
-                    <button className="btn w-full text-white hover:text-black text-xs bg-[#3F9CFF] hover:bg-[#3f9cff7d]">Take assignment</button>
+                    <Link to={`/take-assignment/${_id}`} className="btn w-full text-white text-xs bg-[#3F9CFF] hover:bg-blue-400">Take assignment</Link>
                 </div>
             </div>
         </div>

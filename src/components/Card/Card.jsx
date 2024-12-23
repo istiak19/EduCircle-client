@@ -14,9 +14,9 @@ const Card = ({ assignment }) => {
                 <p><span className="font-bold">Marks: </span>{marks}</p>
                 <p><span className="font-bold">Difficulty level: </span>{level}</p>
                 <div className="card-actions justify-between">
-                    <button className="btn text-white hover:text-black text-xs bg-[#3F9CFF] hover:bg-[#3f9cff7d]">Delete</button>
-                    <button className="btn text-white hover:text-black text-xs bg-[#3F9CFF] hover:bg-[#3f9cff7d]">Update</button>
-                    <Link to={`/details/${_id}`} className="btn text-white hover:text-black text-xs bg-[#3F9CFF] hover:bg-[#3f9cff7d]">View assignment</Link>
+                    <button className="btn text-white text-xs bg-[#3F9CFF] hover:bg-blue-400">Delete</button>
+                    <button className="btn text-white text-xs bg-[#3F9CFF] hover:bg-blue-400">Update</button>
+                    <Link to={`/details/${_id}`} className="btn text-white text-xs bg-[#3F9CFF] hover:bg-blue-400">View assignment</Link>
                 </div>
             </div>
         </div>

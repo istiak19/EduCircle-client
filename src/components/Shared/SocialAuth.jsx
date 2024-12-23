@@ -1,9 +1,11 @@
 import { FaGoogle } from "react-icons/fa6";
 import useAuth from "../../Hook/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const SocialAuth = () => {
 
     const { googleSign } = useAuth()
+    const navigate = useNavigate()
 
     const handleGoogle = () => {
         googleSign()
