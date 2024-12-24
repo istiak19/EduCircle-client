@@ -1,26 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loading from "../components/Loading/Loading";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../Hook/useAuth";
 import Swal from "sweetalert2";
 
 const PendingAssignments = () => {
     const { user } = useAuth()
-    const [error, setError] = useState(null);
     const [selectedSubmission, setSelectedSubmission] = useState(null);
-    
+
     const { data: submissions, isError, isLoading } = useQuery({
-        queryKey: ['submission'], queryFn: async () => {
+        queryKey: ['submission', selectedSubmission], queryFn: async () => {
             const { data } = await axios.get('http://localhost:5000/assignment-submissions');
-            return data;
+            return data.filter(submission => submission?.status !== "completed");
         }
     })
 
     if (isLoading) return <Loading></Loading>
 
-    if (isError) console.log(isError);
+    if (isError) return <p className="mt-5 flex justify-center items-center text-red-600 text-5xl">Error Loading Submissions</p>;
 
     const handleGiveMark = (info) => {
         if (info.submitted_email === user?.email) {
@@ -34,18 +32,34 @@ const PendingAssignments = () => {
         setSelectedSubmission(info)
     }
 
-    const handleExaminer = e => {
+    const handleExaminer = async (e) => {
         e.preventDefault()
         const form = new FormData(e.target);
         const my_marks = form.get('my_marks');
         const feedback = form.get('feedback');
-        const update = { my_marks, feedback, status: 'completed' }
-        console.log(update)
+        const updateInfo = { my_marks, feedback, status: 'completed' }
+        const id = selectedSubmission._id
+        console.log(updateInfo)
+        console.log(id)
+        try {
+            const { data } = await axios.put(`http://localhost:5000/assignment-submission/${id}`, updateInfo)
+            console.log(data)
+            if (data.modifiedCount > 0) {
+                Swal.fire({
+                    position: "top",
+                    icon: "success",
+                    title: "Assignment evaluated successfully!",
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
 
-
     return (
-        <div className="overflow-x-auto my-10">
+        <div className="overflow-x-auto my-10 w-11/12 mx-auto">
             <table className="table">
                 <thead>
                     <tr>
@@ -65,8 +79,8 @@ const PendingAssignments = () => {
                             <td>{submission.title}</td>
                             <td>{submission.status}</td>
                             <td>{submission.marks}</td>
-                            <td>{submission.my_marks ? submission.my_marks === null : 'N/A'}</td>
-                            <td>{submission.feedback ? submission.feedback === null : 'N/A'}</td>
+                            <td>{submission.examinee_name}</td>
+                            <td>{submission.feedback ? submission.feedback : 'N/A'}</td>
                             <td>
                                 <button onClick={() => handleGiveMark(submission)} className="btn bg-[#3F9CFF] text-white font-medium">Give Mark</button>
                             </td>

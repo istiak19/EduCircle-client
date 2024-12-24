@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Typewriter } from "react-simple-typewriter";
+import './feature.css';
 
 const Features = () => {
     const [features, setFeatures] = useState([]);
@@ -17,7 +18,7 @@ const Features = () => {
     }, []);
 
     return (
-        <div className="w-11/12 mx-auto my-10">
+        <div className="my-10">
             <div className="App">
                 <h1 className="text-3xl font-bold text-center mb-6">
                     Key Features{" "}
@@ -41,22 +42,41 @@ const Features = () => {
                     </span>
                 </h1>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {features.map((feature, idx) => (
-                    <div
-                        key={idx}
-                        className="border border-[#3F9CFF] rounded-lg p-4 text-center shadow-md"
-                        data-aos="fade-right"
-                    >
-                        <img
-                            src={feature.icon}
-                            alt="Feature"
-                            className="w-20 h-20 mx-auto mb-3 rounded-md"
-                        />
-                        <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-                        <p className="text-sm text-gray-600">{feature.description}</p>
-                    </div>
-                ))}
+            <div className="scroll-wrapper">
+                <div className="scroll-container">
+                    {features.map((feature, idx) => (
+                        <div
+                            key={idx}
+                            className="scroll-card border border-[#3F9CFF] rounded-lg p-4 shadow-md"
+                            data-aos="fade-right"
+                        >
+                            <img
+                                src={feature.icon}
+                                alt="Feature"
+                                className="w-20 h-20 mx-auto mb-3 rounded-md"
+                            />
+                            <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
+                            <p className="text-sm text-gray-600">{feature.description}</p>
+                        </div>
+                    ))}
+                    {
+                        features.map((feature, idx) => (
+                            <div
+                                key={`duplicate-${idx}`}
+                                className="scroll-card border border-[#3F9CFF] rounded-lg p-4 shadow-md"
+                                data-aos="fade-right"
+                            >
+                                <img
+                                    src={feature.icon}
+                                    alt="Feature"
+                                    className="w-20 h-20 mx-auto mb-3 rounded-md"
+                                />
+                                <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
+                                <p className="text-sm text-gray-600">{feature.description}</p>
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
         </div>
     );

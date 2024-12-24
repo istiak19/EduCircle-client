@@ -1,0 +1,31 @@
+/* This will make the container scroll horizontally */
+.scroll-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* Hide overflow to keep scrolling effect smooth */
+}
+
+/* Container with sequential scrolling animation */
+.scroll-container {
+    display: flex;
+    animation: scrollLeftToRight 30s linear infinite; /* Adjust speed as needed */
+    width: 100%;
+}
+
+/* Individual card styles */
+.scroll-card {
+    flex-shrink: 0;
+    margin-right: 20px;
+    width: 250px; /* Set fixed width for each card */
+    text-align: center;
+}
+
+/* Keyframes to make the scroll from left to right sequentially */
+@keyframes scrollLeftToRight {
+    0% {
+        transform: translateX(0); /* Start from the first card */
+    }
+    100% {
+        transform: translateX(-100%); /* Move through all cards and restart */
+    }
+}

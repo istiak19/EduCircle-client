@@ -28,7 +28,7 @@ const Assignments = () => {
     }
 
     return (
-        <div>
+        <div className="w-11/12 mx-auto">
             {/* Filters and Search */}
             <div className="flex flex-col md:flex-row justify-center items-center gap-5 my-8">
                 <select

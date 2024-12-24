@@ -4,6 +4,7 @@ import axios from "axios";
 
 const MyAttempted = () => {
     const { user } = useAuth()
+    const [error, setError] = useState(null);
     const [submissions, setSubmission] = useState([])
 
     useEffect(() => {
@@ -12,7 +13,7 @@ const MyAttempted = () => {
                 const { data } = await axios.get(`http://localhost:5000/assignment-submissions?email=${user?.email}`)
                 setSubmission(data)
             } catch (error) {
-                console.log(error)
+                setError(error)
             }
         }
         if (user?.email) {
@@ -20,8 +21,10 @@ const MyAttempted = () => {
         }
     }, [user?.email])
 
+    if (error) return <p>{error}</p>
+
     return (
-        <div className="overflow-x-auto my-10">
+        <div className="overflow-x-auto my-10 w-11/12 mx-auto">
             <table className="table">
                 <thead>
                     <tr>
@@ -40,8 +43,8 @@ const MyAttempted = () => {
                             <td>{submission.title}</td>
                             <td>{submission.status}</td>
                             <td>{submission.marks}</td>
-                            <td>{submission.my_marks ? submission.my_marks === null : 'N/A'}</td>
-                            <td>{submission.feedback ? submission.feedback === null : 'N/A'}</td>
+                            <td>{submission.my_marks ? submission.my_marks : 'N/A'}</td>
+                            <td>{submission.feedback ? submission.feedback : 'N/A'}</td>
                         </tr>)
                     }
                 </tbody>

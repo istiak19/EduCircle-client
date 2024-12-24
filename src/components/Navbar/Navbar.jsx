@@ -5,10 +5,10 @@ const Navbar = () => {
     const { user, signOutUser } = useAuth()
 
     const links = <>
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/assignments'>Assignments</NavLink></li>
+        <li className='mr-2'><NavLink to='/'>Home</NavLink></li>
+        <li className='mr-2'><NavLink to='/assignments'>Assignments</NavLink></li>
         {
-            user && <li><NavLink to='/pending-assignments'>Pending Assignments</NavLink></li>
+            user && <li className='mr-2'><NavLink to='/pending-assignments'>Pending Assignments</NavLink></li>
         }
     </>
 
@@ -23,7 +23,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar bg-[#3F9CFF] lg:px-14 py-2 sm:py-5">
+        <div className="navbar backdrop-blur-lg bg-[#F2F2F2] z-50 sticky top-0 lg:px-14 py-2 sm:py-5">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -52,7 +52,7 @@ const Navbar = () => {
                             <img className='w-14' src={logoPic} alt="" />
                         </div>
                         <div>
-                            <h3 className='text-3xl font-bold text-white'>EduCircle</h3>
+                            <h3 className='text-3xl font-bold'>EduCircle</h3>
                         </div>
                     </div>
                 </Link>
@@ -82,7 +82,7 @@ const Navbar = () => {
                     </div>
                 }
                 {
-                    user ? <button onClick={handleSignOut} className="btn bg-transparent text-white font-semibold ml-3">Logout</button> : <Link to='/login' className="btn bg-transparent text-white font-semibold">Login</Link>
+                    user ? <button onClick={handleSignOut} className="btn bg-[#3F9CFF] text-white font-semibold ml-3">Logout</button> : <Link to='/login' className="btn bg-transparent text-white font-semibold">Login</Link>
                 }
             </div>
         </div>

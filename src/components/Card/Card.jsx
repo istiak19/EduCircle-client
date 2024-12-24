@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 import axios from "axios";
-import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 
@@ -9,11 +8,9 @@ const Card = ({ assignment }) => {
     const { _id, title, marks, image, level, email } = assignment
     const { user } = useAuth()
     const navigate = useNavigate()
-    // console.log(user?.email)
     const queryClient = useQueryClient()
 
     const handleDelete = async (id, email) => {
-        console.log('delete---->', id, email)
         if (email !== user?.email) {
             Swal.fire({
                 position: "top",
@@ -24,11 +21,28 @@ const Card = ({ assignment }) => {
             });
             return;
         }
-        // console.log(id, email)
+
         try {
             const { data } = await axios.delete(`http://localhost:5000/assignment/${id}`)
             console.log(data)
-            queryClient.invalidateQueries(['assignments'])
+            if (data.deletedCount > 0) {
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "Want to delete your assignment?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your assignment has been deleted.",
+                        icon: "success"
+                    });
+                    queryClient.invalidateQueries(['assignments'])
+                });
+            }
         } catch (error) {
             console.log(error)
         }
@@ -45,9 +59,7 @@ const Card = ({ assignment }) => {
             });
             return;
         }
-
         navigate(`/update/${id}`)
-        console.log('update---->', id, email)
     }
 
     return (

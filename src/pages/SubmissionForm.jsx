@@ -1,11 +1,14 @@
 import axios from "axios";
 import useAuth from "../Hook/useAuth";
 import Swal from "sweetalert2";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
 
 const SubmissionForm = () => {
     const { user } = useAuth()
     const { id } = useParams()
+    const navigate = useNavigate()
+    const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -13,22 +16,26 @@ const SubmissionForm = () => {
         const link = form.get('link');
         const note = form.get('note');
         const formData = { assignment_id: id, link, note, submitted_email: user?.email, status: 'pending', my_marks: null, feedback: null, examinee_name: user?.displayName }
-        console.log(formData)
+        
         try {
             const { data } = await axios.post('http://localhost:5000/assignment-submissions', formData)
-            console.log(data)
             if (data.insertedId) {
                 Swal.fire({
-                    title: "Your assignment has been successfully submitted!",
+                    position: "top",
                     icon: "success",
-                    draggable: true
+                    title: "Your assignment has been successfully submitted!",
+                    showConfirmButton: false,
+                    timer: 1000
                 });
                 e.target.reset()
+                navigate('/myAttempted')
             }
         } catch (error) {
-            console.log(error)
+            setError(error)
         }
     }
+
+    if (error) return <p>{error}</p>
 
     return (
         <div className="w-full max-w-lg my-10 mx-auto p-5 shadow-lg border rounded-lg">
