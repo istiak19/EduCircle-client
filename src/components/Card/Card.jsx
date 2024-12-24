@@ -9,7 +9,7 @@ const Card = ({ assignment }) => {
     const { _id, title, marks, image, level, email } = assignment
     const { user } = useAuth()
     const navigate = useNavigate()
-    console.log(user?.email)
+    // console.log(user?.email)
     const queryClient = useQueryClient()
 
     const handleDelete = async (id, email) => {
@@ -24,7 +24,7 @@ const Card = ({ assignment }) => {
             });
             return;
         }
-        console.log(id, email)
+        // console.log(id, email)
         try {
             const { data } = await axios.delete(`http://localhost:5000/assignment/${id}`)
             console.log(data)

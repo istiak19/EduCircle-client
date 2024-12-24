@@ -22,25 +22,32 @@ const CreateAssignments = () => {
         const level = form.get('level')
         const email = user?.email
         const name = user?.displayName
+        // if (typeof title !== 'string') {
+        //     console.log('no match')
+        //     return;
+        // }
         const newAssignment = { title, description, marks, image, deadline, level, email, name }
 
-        try {
-            const { data } = await axios.post('http://localhost:5000/assignments', newAssignment);
-            console.log(data);
-            if (data.insertedId) {
-                Swal.fire({
-                    position: "top",
-                    icon: "success",
-                    title: "Assignment created successfully!",
-                    showConfirmButton: false,
-                    timer: 1000
-                });
-                e.target.reset()
-                navigate('/assignments')
-            }
-        } catch (err) {
-            console.log(err);
-        }
+        console.log(newAssignment)
+        console.log(typeof title)
+
+        // try {
+        //     const { data } = await axios.post('http://localhost:5000/assignments', newAssignment);
+        //     console.log(data);
+        //     if (data.insertedId) {
+        //         Swal.fire({
+        //             position: "top",
+        //             icon: "success",
+        //             title: "Assignment created successfully!",
+        //             showConfirmButton: false,
+        //             timer: 1000
+        //         });
+        //         e.target.reset()
+        //         navigate('/assignments')
+        //     }
+        // } catch (err) {
+        //     console.log(err);
+        // }
     }
 
     return (
