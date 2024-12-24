@@ -16,8 +16,6 @@ const Assignments = () => {
         }
     })
 
-    // const [assignments, setAssignments] = useState(loadedData)
-
     // if (isLoading) {
     //     return <Loading></Loading>
     // }

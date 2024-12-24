@@ -26,20 +26,22 @@ const MyAttempted = () => {
                 <thead>
                     <tr>
                         <th>Serial</th>
-                        <th>Title</th>
+                        <th>Assignment Title</th>
                         <th>Status</th>
-                        <th>Marks</th>
-                        <th>My marks</th>
+                        <th>Assignment Marks</th>
+                        <th>My Marks</th>
                         <th>Feedback</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        submissions.map((submission, idx) => <tr>
-                            <th>{idx+1}</th>
+                        submissions.map((submission, idx) => <tr key={submission._id}>
+                            <th>{idx + 1}</th>
                             <td>{submission.title}</td>
                             <td>{submission.status}</td>
                             <td>{submission.marks}</td>
+                            <td>{submission.my_marks ? submission.my_marks === null : 'N/A'}</td>
+                            <td>{submission.feedback ? submission.feedback === null : 'N/A'}</td>
                         </tr>)
                     }
                 </tbody>

@@ -2,7 +2,6 @@ import axios from "axios";
 import useAuth from "../Hook/useAuth";
 import Swal from "sweetalert2";
 import { useParams } from "react-router-dom";
-import Assignments from "./Assignments";
 
 const SubmissionForm = () => {
     const { user } = useAuth()
@@ -13,7 +12,7 @@ const SubmissionForm = () => {
         const form = new FormData(e.target);
         const link = form.get('link');
         const note = form.get('note');
-        const formData = { assignment_id: id, link, note, submitted_email: user?.email, status: 'pending' }
+        const formData = { assignment_id: id, link, note, submitted_email: user?.email, status: 'pending', my_marks: null, feedback: null, examinee_name: user?.displayName }
         console.log(formData)
         try {
             const { data } = await axios.post('http://localhost:5000/assignment-submissions', formData)
