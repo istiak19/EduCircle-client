@@ -1,7 +1,9 @@
 import logo from '../../assets/logo/online-study-100.png'
+import useAuth from '../../Hook/useAuth';
 const Footer = () => {
+    const { isDarkMode } = useAuth()
     return (
-        <footer className='bg-[#F2F2F2]'>
+        <footer className={`${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-[#F2F2F2] text-gray-800'}`}>
             <hr />
             <div className='container px-6 py-8 mx-auto'>
                 <div className='flex flex-col items-center text-center'>
@@ -55,16 +57,16 @@ const Footer = () => {
 
                 <hr className='my-6 border-[black] md:my-10 ' />
 
-                <div className='flex flex-col items-center sm:justify-evenly'>
-                    <p className='text-sm text-black'>
+                <div className={`flex flex-col items-center sm:justify-evenly *:${isDarkMode?'text-white':'text-gray-800'}`}>
+                    <p className='text-sm text-black pb-4'>
                         Copyright © {new Date().getFullYear()} - All right reserved by EduCircle
                     </p>
 
                     <div className='flex -mx-2'>
                         <a
                             href='#'
-                            className='mx-2 text-black transition-colors duration-300 hover:text-blue-500 '
-                            aria-label='Reddit'
+                            className={`${isDarkMode?'text-white':'text-gray-800'} mx-2 text-black transition-colors duration-300 hover:text-blue-500 '
+                            aria-label='Reddit`}
                         >
                             <svg
                                 className='w-5 h-5 fill-current text-black'

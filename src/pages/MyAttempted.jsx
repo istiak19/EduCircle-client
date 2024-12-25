@@ -3,7 +3,7 @@ import useAuth from "../Hook/useAuth";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 
 const MyAttempted = () => {
-    const { user } = useAuth()
+    const { user, isDarkMode } = useAuth()
     const axiosSecure = useAxiosSecure()
     const [error, setError] = useState(null);
     const [submissions, setSubmission] = useState([])
@@ -11,7 +11,6 @@ const MyAttempted = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // const { data } = await axios.get(`https://server-omega-ten-52.vercel.app/assignment-submissions?email=${user?.email}`, { withCredentials: true })
                 const { data } = await axiosSecure.get(`/assignment-submissions?email=${user?.email}`)
                 setSubmission(data)
                 console.log(data)
@@ -29,9 +28,9 @@ const MyAttempted = () => {
 
     return (
         <div className="overflow-x-auto my-10 w-11/12 mx-auto">
-            <table className="table">
+            <table className={`table ${isDarkMode?'text-white':'text-gray-800'}`}>
                 <thead>
-                    <tr>
+                    <tr className={`${isDarkMode?'text-white':'text-gray-800'}`}>
                         <th>Serial</th>
                         <th>Assignment Title</th>
                         <th>Status</th>

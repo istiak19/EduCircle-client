@@ -11,7 +11,7 @@ const Login = () => {
     const navigate = useNavigate()
     const [errorMsg, setErrorMsg] = useState('')
     const [showPassword, setShowPassword] = useState(true)
-    const { signin } = useAuth()
+    const { signin, isDarkMode } = useAuth()
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -50,7 +50,7 @@ const Login = () => {
 
 
     return (
-        <div className="hero min-h-screen my-10">
+        <div className={`hero min-h-screen my-10 ${isDarkMode && 'bg-[#1D232A]'}`}>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <Lottie animationData={login}></Lottie>

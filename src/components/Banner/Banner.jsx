@@ -14,10 +14,10 @@ import Slide from '../Slide';
 
 const Banner = () => {
     return (
-        <div className="container py-10 mx-auto">
+        <div className="container mx-auto">
             <Swiper
                 spaceBetween={30}
-                loop={true}
+                 loop={true}
                 pagination={{
                     clickable: true,
                 }}

@@ -10,21 +10,21 @@ import { toast } from "react-toastify";
 
 const CreateAssignments = () => {
     const [startDate, setStartDate] = useState(new Date());
-    const { user } = useAuth()
-    const axiosSecure = useAxiosSecure()
-    const navigate = useNavigate()
+    const { user, isDarkMode } = useAuth();
+    const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-        const form = new FormData(e.target)
-        const title = form.get('title')
-        const description = form.get('description')
-        const marks = form.get('marks')
-        const image = form.get('image')
-        const deadline = startDate
-        const level = form.get('level')
-        const email = user?.email
-        const name = user?.displayName
+        e.preventDefault();
+        const form = new FormData(e.target);
+        const title = form.get('title');
+        const description = form.get('description');
+        const marks = form.get('marks');
+        const image = form.get('image');
+        const deadline = startDate;
+        const level = form.get('level');
+        const email = user?.email;
+        const name = user?.displayName;
         if (!title || typeof title !== 'string' || title.trim() === "" || !/^[A-Za-z\s]+$/.test(title)) {
             Swal.fire({
                 title: "Title should only contain letters and spaces!",
@@ -67,13 +67,10 @@ const CreateAssignments = () => {
             return;
         }
 
-        const newAssignment = { title, description, marks, image, deadline, level, email, name }
-
-        // console.log(newAssignment)
+        const newAssignment = { title, description, marks, image, deadline, level, email, name };
 
         try {
             const { data } = await axiosSecure.post('/assignments', newAssignment);
-            // console.log(data);
             if (data.insertedId) {
                 Swal.fire({
                     position: "top",
@@ -82,20 +79,19 @@ const CreateAssignments = () => {
                     showConfirmButton: false,
                     timer: 1000
                 });
-                e.target.reset()
-                navigate('/assignments')
+                e.target.reset();
+                navigate('/assignments');
             }
         } catch (err) {
-            // console.log(err);
             toast.error('Something went wrong. Please try again later.');
         }
-    }
+    };
 
     return (
-        <div>
+        <div className={`${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`}>
             <form
                 onSubmit={handleSubmit}
-                className="max-w-2xl my-20 mx-auto border shadow-lg p-6 rounded-xl space-y-4"
+                className={`max-w-2xl my-20 mx-auto border shadow-lg p-6 rounded-xl space-y-4 ${isDarkMode ? 'bg-[#2E353D]' : 'bg-white'}`}
             >
                 <div>
                     <h2 className="text-2xl font-bold mb-4 text-center">Create Assignment</h2>
@@ -107,7 +103,7 @@ const CreateAssignments = () => {
                     <input
                         type="text"
                         name="title"
-                        className="input input-bordered w-full"
+                        className={`input input-bordered w-full ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`}
                         placeholder="Enter assignment title"
                         required
                     />
@@ -119,7 +115,7 @@ const CreateAssignments = () => {
                     </label>
                     <textarea
                         name="description"
-                        className="textarea textarea-bordered w-full"
+                        className={`textarea textarea-bordered w-full ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`}
                         placeholder="Enter assignment description"
                         required
                     ></textarea>
@@ -132,7 +128,7 @@ const CreateAssignments = () => {
                     <input
                         type="number"
                         name="marks"
-                        className="input input-bordered w-full"
+                        className={`input input-bordered w-full ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`}
                         placeholder="Enter assignment marks"
                         required
                     />
@@ -145,11 +141,12 @@ const CreateAssignments = () => {
                     <input
                         type="url"
                         name="image"
-                        className="input input-bordered w-full"
+                        className={`input input-bordered w-full ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`}
                         placeholder="Enter image URL"
                         required
                     />
                 </div>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label htmlFor="difficulty" className="block text-sm font-medium mb-2">
@@ -157,7 +154,7 @@ const CreateAssignments = () => {
                         </label>
                         <select
                             name="level"
-                            className="select select-bordered w-full"
+                            className={`select select-bordered w-full ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`}
                             required
                         >
                             <option value="">Difficulty Level</option>
@@ -171,14 +168,19 @@ const CreateAssignments = () => {
                             Due Date
                         </label>
                         <DatePicker
-                            className="input input-bordered w-full"
+                            className={`input input-bordered w-full ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`}
                             selected={startDate}
                             onChange={(date) => setStartDate(date)}
                             required
                         />
                     </div>
                 </div>
-                <button type="submit" className="btn font-medium bg-[#3F9CFF] text-white w-full hover:bg-blue-400">Add Assignment</button>
+                <button
+                    type="submit"
+                    className={`btn font-medium w-full ${isDarkMode ? 'bg-[#3F9CFF] hover:bg-blue-400' : 'bg-blue-600 hover:bg-blue-500'} text-white`}
+                >
+                    Add Assignment
+                </button>
             </form>
         </div>
     );

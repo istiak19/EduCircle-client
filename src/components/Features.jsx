@@ -3,9 +3,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Typewriter } from "react-simple-typewriter";
 import './feature.css';
+import useAuth from "../Hook/useAuth";
 
 const Features = () => {
     const [features, setFeatures] = useState([]);
+    const { isDarkMode } = useAuth()
 
     useEffect(() => {
         AOS.init({ duration: 1000 });
@@ -18,9 +20,9 @@ const Features = () => {
     }, []);
 
     return (
-        <div className="my-10">
+        <div className={`${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-[#F2F2F2] text-gray-800'}`}>
             <div className="App">
-                <h1 className="text-3xl font-bold text-center mb-6">
+                <h1 className="text-3xl font-bold text-center pt-8 mb-6">
                     Key Features{" "}
                     <span style={{ color: "#3F9CFF" }}>
                         <Typewriter
@@ -48,7 +50,7 @@ const Features = () => {
                     {features.map((feature, idx) => (
                         <div
                             key={idx}
-                            className="scroll-card border border-[#3F9CFF] rounded-lg p-4 shadow-lg bg-base-200"
+                            className={`scroll-card border border-[#3F9CFF] rounded-lg p-4 shadow-lg ${isDarkMode ? 'bg-[#1D232A]' : 'bg-white'}`}
                             data-aos="fade-right"
                         >
                             <img
@@ -64,7 +66,7 @@ const Features = () => {
                         features.map((feature, idx) => (
                             <div
                                 key={`duplicate-${idx}`}
-                                className="scroll-card border border-[#3F9CFF] rounded-lg p-4 shadow-lg bg-base-200"
+                                className={`scroll-card border border-[#3F9CFF] rounded-lg p-4 shadow-lg ${isDarkMode ? 'bg-[#1D232A]' : 'bg-white'}`}
                                 data-aos="fade-right"
                             >
                                 <img

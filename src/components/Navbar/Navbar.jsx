@@ -1,8 +1,10 @@
 import { Link, NavLink } from 'react-router-dom';
 import logoPic from '../../assets/logo/online-study-100.png'
 import useAuth from '../../Hook/useAuth';
+import { MdLightMode, MdOutlineDarkMode } from "react-icons/md";
+
 const Navbar = () => {
-    const { user, signOutUser } = useAuth()
+    const { user, signOutUser, isDarkMode, toggleTheme } = useAuth()
 
     const links = <>
         <li className='mr-2'><NavLink to='/'>Home</NavLink></li>
@@ -23,7 +25,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar backdrop-blur-lg bg-[#F2F2F2] z-50 sticky top-0 lg:px-14 py-2 sm:py-5">
+        <div className={`navbar backdrop-blur-lg z-50 sticky top-0 lg:px-14 py-2 sm:py-5 ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-[#F2F2F2] text-gray-800'}`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -58,11 +60,17 @@ const Navbar = () => {
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className={`menu menu-horizontal px-1 ${isDarkMode && '*:text-gray-600 '}`}>
                     {links}
                 </ul>
             </div>
             <div className="navbar-end">
+                <button
+                    onClick={toggleTheme}
+                    className="btn btn-ghost text-gray-600 text-3xl ml-3"
+                >
+                    {isDarkMode ? <MdOutlineDarkMode /> : <MdLightMode />}
+                </button>
                 {
                     user && <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
@@ -74,7 +82,7 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-56 p-2 shadow">
+                            className={`menu menu-sm dropdown-content  rounded-box z-[1] mt-3 w-56 p-2 shadow ${isDarkMode? 'bg-[#1D232A] text-white':'bg-slate-100'}`}>
                             <li><Link to='/CreateAssignments'>Create Assignments</Link></li>
                             <li><Link to='/myAttempted'>My Attempted Assignments</Link></li>
                         </ul>

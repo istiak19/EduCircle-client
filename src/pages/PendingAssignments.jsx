@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 
 const PendingAssignments = () => {
-    const { user } = useAuth()
+    const { user, isDarkMode } = useAuth()
     const axiosSecure = useAxiosSecure()
     const [selectedSubmission, setSelectedSubmission] = useState(null);
 
@@ -70,9 +70,9 @@ const PendingAssignments = () => {
 
     return (
         <div className="overflow-x-auto my-10 w-11/12 mx-auto">
-            <table className="table">
+            <table className={`table ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
                 <thead>
-                    <tr>
+                    <tr className={`${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
                         <th>Serial</th>
                         <th>Assignment Title</th>
                         <th>Status</th>
