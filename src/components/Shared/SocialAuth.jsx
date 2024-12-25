@@ -10,11 +10,11 @@ const SocialAuth = () => {
     const handleGoogle = () => {
         googleSign()
             .then(result => {
-                console.log(result.user)
+                // console.log(result.user)
                 navigate('/')
             })
             .catch(error => {
-                console.log(error.message)
+                // console.log(error.message)
             })
     }
 

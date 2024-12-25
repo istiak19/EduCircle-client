@@ -37,13 +37,13 @@ const Login = () => {
 
         signin(email, password)
             .then(result => {
-                console.log(result.user)
+                // console.log(result.user)
                 e.target.reset()
                 navigate('/')
                 toast.success('Successfully login')
             })
             .catch(error => {
-                console.log(error.message)
+                // console.log(error.message)
                 setErrorMsg(error.message)
             })
     }

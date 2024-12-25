@@ -39,11 +39,10 @@ const PendingAssignments = () => {
         const feedback = form.get('feedback');
         const updateInfo = { my_marks, feedback, status: 'completed' }
         const id = selectedSubmission._id
-        console.log(updateInfo)
-        console.log(id)
+
         try {
             const { data } = await axios.put(`http://localhost:5000/assignment-submission/${id}`, updateInfo)
-            console.log(data)
+            // console.log(data)
             if (data.modifiedCount > 0) {
                 Swal.fire({
                     position: "top",
@@ -54,7 +53,7 @@ const PendingAssignments = () => {
                 });
             }
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 

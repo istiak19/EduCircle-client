@@ -24,7 +24,7 @@ const Card = ({ assignment }) => {
 
         try {
             const { data } = await axios.delete(`http://localhost:5000/assignment/${id}`)
-            console.log(data)
+            // console.log(data)
             if (data.deletedCount > 0) {
                 Swal.fire({
                     title: "Are you sure?",
@@ -44,7 +44,7 @@ const Card = ({ assignment }) => {
                 });
             }
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 

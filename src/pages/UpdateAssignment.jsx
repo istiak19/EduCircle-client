@@ -28,7 +28,7 @@ const UpdateAssignment = () => {
 
         try {
             const { data } = await axios.put(`http://localhost:5000/assignment/${_id}`, newAssignment)
-            console.log(data)
+
             if (data.modifiedCount > 0) {
                 Swal.fire({
                     position: "top",
@@ -40,7 +40,7 @@ const UpdateAssignment = () => {
             }
             navigate('/assignments')
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 

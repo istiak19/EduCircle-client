@@ -47,7 +47,7 @@ const Features = () => {
                     {features.map((feature, idx) => (
                         <div
                             key={idx}
-                            className="scroll-card border border-[#3F9CFF] rounded-lg p-4 shadow-md"
+                            className="scroll-card border border-[#3F9CFF] rounded-lg p-4 shadow-lg bg-base-200"
                             data-aos="fade-right"
                         >
                             <img
@@ -63,7 +63,7 @@ const Features = () => {
                         features.map((feature, idx) => (
                             <div
                                 key={`duplicate-${idx}`}
-                                className="scroll-card border border-[#3F9CFF] rounded-lg p-4 shadow-md"
+                                className="scroll-card border border-[#3F9CFF] rounded-lg p-4 shadow-lg bg-base-200"
                                 data-aos="fade-right"
                             >
                                 <img

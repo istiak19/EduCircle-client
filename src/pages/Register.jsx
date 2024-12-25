@@ -40,14 +40,14 @@ const Register = () => {
 
         signup(email, password)
             .then(result => {
-                console.log(result.user)
+                // console.log(result.user)
                 toast.success('Successfully Register')
                 navigate('/')
                 const newUser = { name, email }
                 updateProfileUser({ displayName: name, photoURL: photo })
             })
             .catch(error => {
-                console.log(error.message)
+                // console.log(error.message)
                 setErrorMsg(error.message)
             })
     }

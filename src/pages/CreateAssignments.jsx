@@ -28,12 +28,12 @@ const CreateAssignments = () => {
         // }
         const newAssignment = { title, description, marks, image, deadline, level, email, name }
 
-        console.log(newAssignment)
+        // console.log(newAssignment)
         // console.log(typeof title)
 
         try {
             const { data } = await axios.post('http://localhost:5000/assignments', newAssignment);
-            console.log(data);
+            // console.log(data);
             if (data.insertedId) {
                 Swal.fire({
                     position: "top",
