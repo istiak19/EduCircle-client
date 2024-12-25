@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const SocialAuth = () => {
 
-    const { googleSign } = useAuth()
+    const { googleSign, isDarkMode } = useAuth()
     const navigate = useNavigate()
 
     const handleGoogle = () => {
@@ -20,7 +20,7 @@ const SocialAuth = () => {
 
     return (
         <div>
-            <button onClick={handleGoogle} className="btn border-2 border-[#007bffc0] rounded-full px-10"><FaGoogle></FaGoogle>Continue with Google</button>
+            <button onClick={handleGoogle} className={`${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'} btn border-2 border-[#007bffc0] rounded-full px-10 hover:bg-blue-500 hover:text-white`}><FaGoogle></FaGoogle>Continue with Google</button>
         </div>
     );
 };

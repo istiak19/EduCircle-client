@@ -3,6 +3,7 @@ import Loading from "../components/Loading/Loading";
 import { useState } from "react";
 import useAuth from "../Hook/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 
 const PendingAssignments = () => {
@@ -70,6 +71,9 @@ const PendingAssignments = () => {
 
     return (
         <div className="overflow-x-auto my-10 w-11/12 mx-auto">
+            <Helmet>
+                <title>PendingAssignments - EduCircle</title>
+            </Helmet>
             <table className={`table ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
                 <thead>
                     <tr className={`${isDarkMode ? 'text-white' : 'text-gray-800'}`}>

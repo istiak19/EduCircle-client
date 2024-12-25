@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAuth from "../Hook/useAuth";
 import useAxiosSecure from "../Hook/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 const MyAttempted = () => {
     const { user, isDarkMode } = useAuth()
@@ -13,10 +14,10 @@ const MyAttempted = () => {
             try {
                 const { data } = await axiosSecure.get(`/assignment-submissions?email=${user?.email}`)
                 setSubmission(data)
-                console.log(data)
+                // console.log(data)
             } catch (error) {
                 setError(error)
-                console.log(error)
+                // console.log(error)
             }
         }
         if (user?.email) {
@@ -28,9 +29,12 @@ const MyAttempted = () => {
 
     return (
         <div className="overflow-x-auto my-10 w-11/12 mx-auto">
-            <table className={`table ${isDarkMode?'text-white':'text-gray-800'}`}>
+            <Helmet>
+                <title>MyAttempted - EduCircle</title>
+            </Helmet>
+            <table className={`table ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
                 <thead>
-                    <tr className={`${isDarkMode?'text-white':'text-gray-800'}`}>
+                    <tr className={`${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
                         <th>Serial</th>
                         <th>Assignment Title</th>
                         <th>Status</th>

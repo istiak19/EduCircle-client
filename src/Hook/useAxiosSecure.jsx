@@ -25,7 +25,7 @@ const useAxiosSecure = () => {
                         navigate('/login')
                     })
                     .catch(error => {
-                        console.log(error)
+                        // console.log(error)
                     })
             }
             // console.log('caught in interceptors--->', error)

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import { Helmet } from "react-helmet";
 import Swal from 'sweetalert2';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -89,6 +89,9 @@ const CreateAssignments = () => {
 
     return (
         <div className={`${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`}>
+            <Helmet>
+                <title>CreateAssignment - EduCircle</title>
+            </Helmet>
             <form
                 onSubmit={handleSubmit}
                 className={`max-w-2xl my-20 mx-auto border shadow-lg p-6 rounded-xl space-y-4 ${isDarkMode ? 'bg-[#2E353D]' : 'bg-white'}`}

@@ -55,27 +55,27 @@ const Login = () => {
                 <div className="text-center lg:text-left">
                     <Lottie animationData={login}></Lottie>
                 </div>
-                <div className="card bg-base-100 w-full max-w-md shrink-0 shadow-2xl border">
+                <div className={`card w-full max-w-md shrink-0 shadow-2xl border ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
                     <h1 className="text-4xl text-center pt-5 font-bold">Login now!</h1>
-                    <form className="card-body" onSubmit={handleLogin}>
+                    <form className={`card-body ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`} onSubmit={handleLogin}>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Email</span>
+                                <span className={`label-text ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Email</span>
                             </label>
-                            <input type="email" placeholder="Email" name="email" className="input input-bordered" required />
+                            <input type="email" placeholder="Email" name="email" className={`input input-bordered ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`} required />
                         </div>
                         <div className="form-control relative">
                             <label className="label">
-                                <span className="label-text">Password</span>
+                                <span className={`label-text ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Password</span>
                             </label>
-                            <input type={showPassword ? 'password' : 'text'} placeholder="Password" name="password" className="input input-bordered" required />
+                            <input type={showPassword ? 'password' : 'text'} placeholder="Password" name="password" className={`input input-bordered ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`} required />
                             <button onClick={() => setShowPassword(!showPassword)} className="absolute top-14 right-3">{showPassword ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>}</button>
                             <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                <a href="#" className={`label-text-alt link link-hover  ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Forgot password?</a>
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn bg-[#007bffc0] text-white">Login</button>
+                            <button className="btn bg-[#007bffc0] text-white hover:bg-blue-500">Login</button>
                         </div>
                         <p>Don't have an account? <Link to='/register' className="text-[#007bffc0] border-b border-[#007bffc0]">Register</Link></p>
                         {

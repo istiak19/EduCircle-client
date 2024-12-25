@@ -4,6 +4,7 @@ import Loading from "../components/Loading/Loading";
 import Card from "../components/Card/Card";
 import { useState } from "react";
 import useAuth from "../Hook/useAuth";
+import { Helmet } from "react-helmet";
 
 const Assignments = () => {
     const { isDarkMode } = useAuth();
@@ -31,13 +32,16 @@ const Assignments = () => {
 
     return (
         <div className={`w-11/12 mx-auto`}>
+            <Helmet>
+                <title>Assignment - EduCircle</title>
+            </Helmet>
             {/* Filters and Search */}
             <div className={`flex flex-col md:flex-row justify-center items-center gap-5 my-8`}>
                 <select
                     name="level"
                     id="level"
                     onChange={(e) => setFilter(e.target.value)}
-                    className={`${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'} border p-4 rounded-lg`}
+                    className={`${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'} border p-3 rounded-lg`}
                     value={filter}
                 >
                     <option value="">Filter By Difficulty Level</option>
@@ -52,22 +56,10 @@ const Assignments = () => {
                         type="text"
                         onChange={(e) => setSearch(e.target.value)}
                         name="search"
-                        className={`grow ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'} p-4 rounded-lg`}
+                        className={`p-4 rounded-lg ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`}
                         placeholder="Search"
                         value={search}
                     />
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 16 16"
-                        fill="currentColor"
-                        className={`${isDarkMode ? 'text-white' : 'text-gray-500'} h-4 w-4 opacity-70`}
-                    >
-                        <path
-                            fillRule="evenodd"
-                            d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                            clipRule="evenodd"
-                        />
-                    </svg>
                 </label>
 
                 <div>
