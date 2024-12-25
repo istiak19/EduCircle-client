@@ -27,7 +27,7 @@ const UpdateAssignment = () => {
         const newAssignment = { title, description, marks, image, deadline, level, email, name }
 
         try {
-            const { data } = await axios.put(`http://localhost:5000/assignment/${_id}`, newAssignment)
+            const { data } = await axios.put(`https://server-omega-ten-52.vercel.app/assignment/${_id}`, newAssignment)
 
             if (data.modifiedCount > 0) {
                 Swal.fire({

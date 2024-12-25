@@ -1,17 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import Loading from "../components/Loading/Loading";
 import { useState } from "react";
 import useAuth from "../Hook/useAuth";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../Hook/useAxiosSecure";
+import axios from "axios";
 
 const PendingAssignments = () => {
     const { user } = useAuth()
+    const axiosSecure = useAxiosSecure()
     const [selectedSubmission, setSelectedSubmission] = useState(null);
 
     const { data: submissions, isError, isLoading } = useQuery({
         queryKey: ['submission', selectedSubmission], queryFn: async () => {
-            const { data } = await axios.get('http://localhost:5000/assignment-submissions');
+            const { data } = await axiosSecure.get('/assignment-submissions');
             return data.filter(submission => submission?.status !== "completed");
         }
     })
@@ -41,7 +43,7 @@ const PendingAssignments = () => {
         const id = selectedSubmission._id
 
         try {
-            const { data } = await axios.put(`http://localhost:5000/assignment-submission/${id}`, updateInfo)
+            const { data } = await axios.put(`https://server-omega-ten-52.vercel.app/assignment-submission/${id}`, updateInfo)
             // console.log(data)
             if (data.modifiedCount > 0) {
                 Swal.fire({

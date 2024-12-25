@@ -49,17 +49,17 @@ const routers = createBrowserRouter([
             },
             {
                 path: '/details/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/assignment/${params.id}`),
+                loader: ({ params }) => fetch(`https://server-omega-ten-52.vercel.app/assignment/${params.id}`),
                 element: <PrivateRouter><Details></Details></PrivateRouter>
             },
             {
                 path: '/take-assignment/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/assignment/${params.id}`),
+                loader: ({ params }) => fetch(`https://server-omega-ten-52.vercel.app/assignment/${params.id}`),
                 element: <PrivateRouter><SubmissionForm></SubmissionForm></PrivateRouter>
             },
             {
                 path: '/update/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/assignment/${params.id}`),
+                loader: ({ params }) => fetch(`https://server-omega-ten-52.vercel.app/assignment/${params.id}`),
                 element: <PrivateRouter><UpdateAssignment></UpdateAssignment></PrivateRouter>
             }
         ]

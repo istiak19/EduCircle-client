@@ -23,7 +23,7 @@ const Card = ({ assignment }) => {
         }
 
         try {
-            const { data } = await axios.delete(`http://localhost:5000/assignment/${id}`)
+            const { data } = await axios.delete(`https://server-omega-ten-52.vercel.app/assignment/${id}`)
             // console.log(data)
             if (data.deletedCount > 0) {
                 Swal.fire({

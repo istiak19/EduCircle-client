@@ -32,7 +32,7 @@ const CreateAssignments = () => {
         // console.log(typeof title)
 
         try {
-            const { data } = await axios.post('http://localhost:5000/assignments', newAssignment);
+            const { data } = await axios.post('https://server-omega-ten-52.vercel.app/assignments', newAssignment);
             // console.log(data);
             if (data.insertedId) {
                 Swal.fire({

@@ -18,7 +18,7 @@ const SubmissionForm = () => {
         const formData = { assignment_id: id, link, note, submitted_email: user?.email, status: 'pending', my_marks: null, feedback: null, examinee_name: user?.displayName }
         
         try {
-            const { data } = await axios.post('http://localhost:5000/assignment-submissions', formData)
+            const { data } = await axios.post('https://server-omega-ten-52.vercel.app/assignment-submissions', formData)
             if (data.insertedId) {
                 Swal.fire({
                     position: "top",
