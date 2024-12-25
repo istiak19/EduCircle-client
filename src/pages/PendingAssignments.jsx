@@ -4,7 +4,6 @@ import { useState } from "react";
 import useAuth from "../Hook/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../Hook/useAxiosSecure";
-import axios from "axios";
 
 const PendingAssignments = () => {
     const { user } = useAuth()
@@ -39,11 +38,20 @@ const PendingAssignments = () => {
         const form = new FormData(e.target);
         const my_marks = form.get('my_marks');
         const feedback = form.get('feedback');
+        if (parseInt(my_marks) > parseInt(selectedSubmission.marks)) {
+            Swal.fire({
+                position: 'top',
+                icon: 'warning',
+                title: 'Marks cannot exceed the assignment total!',
+                showConfirmButton: false,
+                timer: 1000
+            });
+            return;
+        }
         const updateInfo = { my_marks, feedback, status: 'completed' }
-        const id = selectedSubmission._id
-
+        const id = selectedSubmission._id;
         try {
-            const { data } = await axios.put(`https://server-omega-ten-52.vercel.app/assignment-submission/${id}`, updateInfo)
+            const { data } = await axiosSecure.put(`https://server-omega-ten-52.vercel.app/assignment-submission/${id}`, updateInfo)
             // console.log(data)
             if (data.modifiedCount > 0) {
                 Swal.fire({
@@ -53,6 +61,7 @@ const PendingAssignments = () => {
                     showConfirmButton: false,
                     timer: 1000
                 });
+                setSelectedSubmission(null)
             }
         } catch (error) {
             // console.log(error)

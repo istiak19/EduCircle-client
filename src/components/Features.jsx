@@ -25,12 +25,13 @@ const Features = () => {
                     <span style={{ color: "#3F9CFF" }}>
                         <Typewriter
                             words={[
-                                "Collaborative Group Study",
-                                "Assignment Management",
-                                "Real-Time Notifications",
-                                "FAQ and Help",
-                                "User-Friendly Interface",
-                                "Performance Tracking !"
+                                "👥 Collaborative Study Groups",
+                                "📂 Easy Assignment Creation & Submission",
+                                "📊 Performance Analytics & Tracking",
+                                "🔔 Real-Time Updates & Notifications",
+                                "💡 Peer Grading System for Engagement",
+                                "📖 Comprehensive FAQ",
+                                "🎨 Intuitive User Interface for Seamless Experience",
                             ]}
                             loop={5}
                             cursor

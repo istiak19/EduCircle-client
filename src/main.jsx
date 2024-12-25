@@ -5,11 +5,7 @@ import { RouterProvider } from 'react-router-dom'
 import routers from './routers/routers.jsx'
 import AuthProvider from './provider/AuthProvider.jsx'
 import { ToastContainer } from 'react-toastify'
-import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery,
-} from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const queryClient = new QueryClient()
 

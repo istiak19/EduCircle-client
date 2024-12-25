@@ -1,13 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
-import axios from "axios";
 import { useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 const Card = ({ assignment }) => {
     const { _id, title, marks, image, level, email } = assignment
     const { user } = useAuth()
     const navigate = useNavigate()
+    const axiosSecure=useAxiosSecure()
     const queryClient = useQueryClient()
 
     const handleDelete = async (id, email) => {
@@ -23,7 +24,7 @@ const Card = ({ assignment }) => {
         }
 
         try {
-            const { data } = await axios.delete(`https://server-omega-ten-52.vercel.app/assignment/${id}`)
+            const { data } = await axiosSecure.delete(`/assignment/${id}`)
             // console.log(data)
             if (data.deletedCount > 0) {
                 Swal.fire({

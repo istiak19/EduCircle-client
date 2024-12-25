@@ -7,13 +7,17 @@ import 'swiper/css/navigation';
 
 // Import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import banner1 from '../../assets/slide/pic-1.jpg'
+import banner2 from '../../assets/slide/pic-2.jpg'
+import banner3 from '../../assets/slide/pic-3.jpg'
 import Slide from '../Slide';
 
 const Banner = () => {
     return (
-        <div className="container px-6 py-10 mx-auto">
+        <div className="container py-10 mx-auto">
             <Swiper
                 spaceBetween={30}
+                loop={true}
                 pagination={{
                     clickable: true,
                 }}
@@ -26,20 +30,20 @@ const Banner = () => {
             >
                 <SwiperSlide>
                     <Slide
-                        // image={bgimg1}
-                        text="Get Your Web Development Projects Done in minutes"
+                        image={banner1}
+                        text=" Welcome to Online Group-Study with Friends"
                     />
                 </SwiperSlide>
                 <SwiperSlide>
                     <Slide
-                        // image={bgimg1}
-                        text="Boost Your Productivity with Modern Tools"
+                        image={banner2}
+                        text="Create, Complete, and Grade Assignments"
                     />
                 </SwiperSlide>
                 <SwiperSlide>
                     <Slide
-                        // image={bgimg1}
-                        text="Simplify and Scale Your Digital Solutions"
+                        image={banner3}
+                        text="Enhance Collaboration and Learning Together"
                     />
                 </SwiperSlide>
             </Swiper>

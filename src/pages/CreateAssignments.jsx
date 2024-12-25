@@ -5,10 +5,13 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../Hook/useAuth";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../Hook/useAxiosSecure";
+import { toast } from "react-toastify";
 
 const CreateAssignments = () => {
     const [startDate, setStartDate] = useState(new Date());
     const { user } = useAuth()
+    const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
@@ -22,17 +25,54 @@ const CreateAssignments = () => {
         const level = form.get('level')
         const email = user?.email
         const name = user?.displayName
-        // if (typeof title !== 'string') {
-        //     console.log('no match')
-        //     return;
-        // }
+        if (!title || typeof title !== 'string' || title.trim() === "" || !/^[A-Za-z\s]+$/.test(title)) {
+            Swal.fire({
+                title: "Title should only contain letters and spaces!",
+                icon: "error",
+                draggable: true
+            });
+            return;
+        }
+        if (!description || description.trim() === "" || typeof description !== 'string' || !/^[A-Za-z0-9\s!.,?'-]+$/.test(description)) {
+            Swal.fire({
+                title: "Description should contain only letters, numbers and valid special characters!",
+                icon: "error",
+                draggable: true
+            });
+            return;
+        }
+        if (!marks || isNaN(marks) || marks <= 0) {
+            Swal.fire({
+                title: "Marks should be a valid positive number greater than 0!",
+                icon: "error",
+                draggable: true
+            });
+            return;
+        }
+        const urlPattern = /^https?:\/\/[^\s]+$/;
+        if (!image || !urlPattern.test(image)) {
+            Swal.fire({
+                title: "Please enter a valid image URL!",
+                icon: "error",
+                draggable: true
+            });
+            return;
+        }
+        if (deadline <= new Date()) {
+            Swal.fire({
+                title: "Due date should be in the future!",
+                icon: "error",
+                draggable: true
+            });
+            return;
+        }
+
         const newAssignment = { title, description, marks, image, deadline, level, email, name }
 
         // console.log(newAssignment)
-        // console.log(typeof title)
 
         try {
-            const { data } = await axios.post('https://server-omega-ten-52.vercel.app/assignments', newAssignment);
+            const { data } = await axiosSecure.post('/assignments', newAssignment);
             // console.log(data);
             if (data.insertedId) {
                 Swal.fire({
@@ -46,7 +86,8 @@ const CreateAssignments = () => {
                 navigate('/assignments')
             }
         } catch (err) {
-            console.log(err);
+            // console.log(err);
+            toast.error('Something went wrong. Please try again later.');
         }
     }
 

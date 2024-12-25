@@ -21,7 +21,11 @@ const Register = () => {
         const email = form.get('email')
         const password = form.get('password')
         setErrorMsg('')
-        const user = { name, photo, email, password }
+        // const user = { name, photo, email, password }
+        if (!name || typeof name !== 'string' || name.trim() === "" || !/^[A-Za-z\s]+$/.test(name)) {
+            setErrorMsg('Title should only contain letters.');
+            return;
+        }
 
         if (password.length < 6) {
             setErrorMsg('Password must be at least 6 characters long.')
@@ -43,7 +47,7 @@ const Register = () => {
                 // console.log(result.user)
                 toast.success('Successfully Register')
                 navigate('/')
-                const newUser = { name, email }
+                // const newUser = { name, email }
                 updateProfileUser({ displayName: name, photoURL: photo })
             })
             .catch(error => {
@@ -91,7 +95,7 @@ const Register = () => {
                         </div>
                         <p>Already have an account? <Link to='/login' className="text-[#007bffc0] border-b border-[#007bffc0]">Login</Link></p>
                         {
-                            errorMsg && <p>{errorMsg}</p>
+                            errorMsg && <p className="text-red-500">{errorMsg}</p>
                         }
                     </form>
                     <div className="flex flex-col justify-center items-center pb-8 space-y-4">
