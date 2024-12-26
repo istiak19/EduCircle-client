@@ -3,10 +3,12 @@ import useAuth from "../Hook/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
+import useAxiosSecure from "../Hook/useAxiosSecure";
 
 const SubmissionForm = () => {
     const { user, isDarkMode } = useAuth()
     const { id } = useParams()
+    const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
     const [error, setError] = useState(null);
 
@@ -18,7 +20,7 @@ const SubmissionForm = () => {
         const formData = { assignment_id: id, link, note, submitted_email: user?.email, status: 'pending', my_marks: null, feedback: null, examinee_name: user?.displayName }
 
         try {
-            const { data } = await axios.post('https://server-omega-ten-52.vercel.app/assignment-submissions', formData)
+            const { data } = await axiosSecure.post('/assignment-submissions', formData)
             if (data.insertedId) {
                 Swal.fire({
                     position: "top",

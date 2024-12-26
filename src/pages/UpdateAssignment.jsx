@@ -1,18 +1,27 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../Hook/useAxiosSecure";
+import { Helmet } from "react-helmet";
+import { useQuery } from "@tanstack/react-query";
 
 const UpdateAssignment = () => {
-    const assignment = useLoaderData()
-    const [startDate, setStartDate] = useState(new Date());
-    const { user } = useAuth()
-    const axiosSecure = useAxiosSecure()
-    const { _id, title, description, marks, image, deadline, level, email, name } = assignment
     const navigate = useNavigate()
+    const [startDate, setStartDate] = useState(new Date());
+    const { user, isDarkMode } = useAuth()
+    const axiosSecure = useAxiosSecure()
+    const { id } = useParams()
+    const { data: assignment, isLoading, isError } = useQuery({
+        queryKey: ['assignment', id],
+        queryFn: async () => {
+            const { data } = await axiosSecure.get(`/assignment/${id}`);
+            return data;
+        },
+    });
+    // console.log(assignment)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -70,7 +79,7 @@ const UpdateAssignment = () => {
         const newAssignment = { title, description, marks, image, deadline, level, email, name }
 
         try {
-            const { data } = await axiosSecure.put(`https://server-omega-ten-52.vercel.app/assignment/${_id}`, newAssignment)
+            const { data } = await axiosSecure.put(`/assignment/${assignment?._id}`, newAssignment)
 
             if (data.modifiedCount > 0) {
                 Swal.fire({
@@ -89,12 +98,15 @@ const UpdateAssignment = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>UpdateAssignment - EduCircle</title>
+            </Helmet>
             <div>
                 <form
                     onSubmit={handleSubmit}
-                    className="max-w-2xl my-20 mx-auto border shadow-lg p-6 rounded-xl space-y-4"
+                    className={`max-w-2xl my-20 mx-auto border shadow-lg p-6 rounded-xl space-y-4 ${isDarkMode ? 'bg-[#2E353D]' : 'bg-white'}`}
                 >
-                    <div>
+                    <div className={`${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
                         <h2 className="text-2xl font-bold mb-4 text-center">Update Assignment</h2>
                     </div>
                     <div>
@@ -104,8 +116,8 @@ const UpdateAssignment = () => {
                         <input
                             type="text"
                             name="title"
-                            defaultValue={title}
-                            className="input input-bordered w-full"
+                            defaultValue={assignment?.title}
+                            className={`input input-bordered w-full ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`}
                             placeholder="Enter assignment title"
                             required
                         />
@@ -117,8 +129,8 @@ const UpdateAssignment = () => {
                         </label>
                         <textarea
                             name="description"
-                            defaultValue={description}
-                            className="textarea textarea-bordered w-full"
+                            defaultValue={assignment?.description}
+                            className={`input input-bordered w-full ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`}
                             placeholder="Enter assignment description"
                             required
                         ></textarea>
@@ -130,9 +142,9 @@ const UpdateAssignment = () => {
                         </label>
                         <input
                             type="number"
-                            defaultValue={marks}
+                            defaultValue={assignment?.marks}
                             name="marks"
-                            className="input input-bordered w-full"
+                            className={`input input-bordered w-full ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`}
                             placeholder="Enter assignment marks"
                             required
                         />
@@ -145,8 +157,8 @@ const UpdateAssignment = () => {
                         <input
                             type="url"
                             name="image"
-                            defaultValue={image}
-                            className="input input-bordered w-full"
+                            defaultValue={assignment?.image}
+                            className={`input input-bordered w-full ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`}
                             placeholder="Enter image URL"
                             required
                         />
@@ -158,7 +170,7 @@ const UpdateAssignment = () => {
                             </label>
                             <select
                                 name="level"
-                                className="select select-bordered w-full"
+                                className={`select select-bordered w-full ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`}
                                 required
                             >
                                 <option value="">Difficulty Level</option>
@@ -172,7 +184,7 @@ const UpdateAssignment = () => {
                                 Due Date
                             </label>
                             <DatePicker
-                                className="input input-bordered w-full"
+                                className={`input input-bordered w-full ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`}
                                 selected={startDate}
                                 onChange={(date) => setStartDate(date)}
                                 required
