@@ -4,7 +4,6 @@ const Footer = () => {
     const { isDarkMode } = useAuth()
     return (
         <footer className={`${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-[#F2F2F2] text-gray-800'}`}>
-            <hr />
             <div className='container px-6 py-8 mx-auto'>
                 <div className='flex flex-col items-center text-center'>
                     <div className='flex gap-2 items-center'>
@@ -55,7 +54,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <hr className='my-6 border-[black] md:my-10 ' />
+                <hr className={`my-6 ${isDarkMode?'border border-stone-200':'border border-gray-500'} md:my-10 `} />
 
                 <div className={`flex flex-col items-center sm:justify-evenly *:${isDarkMode?'text-white':'text-gray-800'}`}>
                     <p className='text-sm text-black pb-4'>

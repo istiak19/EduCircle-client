@@ -57,12 +57,12 @@ const Register = () => {
     }
 
     return (
-        <div className="hero min-h-screen my-10">
+        <div className="hero min-h-screen my-5">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <Lottie animationData={register}></Lottie>
                 </div>
-                <div className={`card w-full max-w-md shrink-0 shadow-2xl border ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
+                <div className={`card w-full max-w-md shrink-0 shadow-2xl border ${isDarkMode ? 'text-white border-gray-500' : 'text-gray-800'}`}>
                     <h1 className="text-4xl text-center pt-5 font-bold">Create Account</h1>
                     <form className={`card-body ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'}`} onSubmit={handleRegister}>
                         <div className="form-control">

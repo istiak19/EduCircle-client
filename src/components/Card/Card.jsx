@@ -65,7 +65,7 @@ const Card = ({ assignment }) => {
     };
 
     return (
-        <div className={`${isDarkMode ? 'bg-slate-800' : 'bg-[#F2F2F2] border border-[#3F9CFF]'} card shadow-xl p-4 space-y-4`}>
+        <div className={`${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800 border'} card shadow-xl p-4 space-y-4`}>
             <figure>
                 <img
                     className="h-64 rounded-xl"

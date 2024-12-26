@@ -2,8 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { format } from 'date-fns';
 import { Link, useLoaderData } from "react-router-dom";
+import useAuth from "../Hook/useAuth";
 
 const Details = () => {
+    const { isDarkMode } = useAuth()
     //     const {data}=useQuery({queryKey: ['assignments'],  queryFn:async()=>{
     // const {data}=await axios.get()
     // }})
@@ -11,7 +13,7 @@ const Details = () => {
     const { _id, title, description, marks, image, deadline, level, email, name } = assignment
 
     return (
-        <div className="card my-16 max-w-3xl p-5 mx-auto space-y-4 border shadow-xl">
+        <div className={`card my-16 max-w-3xl p-5 mx-auto space-y-4 border shadow-xl ${isDarkMode ? 'bg-[#1D232A] text-white border-gray-500' : 'bg-white text-gray-800'}`}>
             <figure>
                 <img className="w-full rounded-xl border border-[#3F9CFF]"
                     src={image}

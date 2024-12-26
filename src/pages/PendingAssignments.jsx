@@ -104,52 +104,76 @@ const PendingAssignments = () => {
             </table>
             {/* Modal */}
             {
-                selectedSubmission && <div className="modal modal-open">
-                    <div className="modal-box">
-                        <h3 className="font-bold text-xl">Give Marks for {selectedSubmission.title}</h3>
+                selectedSubmission && <div
+                    className={`modal modal-open ${isDarkMode ? "bg-[#1D232A] text-white" : "bg-white text-gray-800"
+                        }`}
+                >
+                    <div className={`modal-box ${isDarkMode ? "bg-[#2C3E50]" : "bg-white"}`}>
+                        <h3 className="font-bold text-xl">
+                            Give Marks for {selectedSubmission.title}
+                        </h3>
                         <p className="mt-2">
                             <span className="font-bold">Assignment Link:</span>{" "}
                             <a
                                 href={selectedSubmission.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-blue-600 underline"
+                                className={`${isDarkMode ? "text-blue-400" : "text-blue-600"
+                                    } underline`}
                             >
                                 View Google Docs
                             </a>
                         </p>
-                        <p className="mt-2 text-xs"><span className="font-bold">Note: </span>{selectedSubmission.note}</p>
+                        <p className="mt-2 text-xs">
+                            <span className="font-bold">Note: </span>
+                            {selectedSubmission.note}
+                        </p>
                         <form className="mt-4" onSubmit={handleExaminer}>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Marks</span>
+                                    <span
+                                        className={`label-text ${isDarkMode ? "text-gray-300" : "text-gray-800"
+                                            }`}
+                                    >
+                                        Marks
+                                    </span>
                                 </label>
                                 <input
                                     type="number"
                                     name="my_marks"
-                                    className="input input-bordered"
+                                    className={`input input-bordered ${isDarkMode ? "bg-[#34495E] text-white" : "bg-white"
+                                        }`}
                                     placeholder="Enter marks"
                                     required
                                 />
                             </div>
                             <div className="form-control mt-2">
                                 <label className="label">
-                                    <span className="label-text">Feedback</span>
+                                    <span
+                                        className={`label-text ${isDarkMode ? "text-gray-300" : "text-gray-800"
+                                            }`}
+                                    >
+                                        Feedback
+                                    </span>
                                 </label>
                                 <textarea
                                     name="feedback"
-                                    className="textarea textarea-bordered"
+                                    className={`textarea textarea-bordered ${isDarkMode ? "bg-[#34495E] text-white" : "bg-white"
+                                        }`}
                                     placeholder="Enter feedback"
                                     required
                                 ></textarea>
                             </div>
                             <div className="modal-action">
-                                <button type="submit" className="btn text-white bg-[#3F9CFF]">
+                                <button
+                                    type="submit"
+                                    className="btn text-white bg-[#3F9CFF] hover:bg-[#007BFF]"
+                                >
                                     Submit
                                 </button>
                                 <button
                                     type="button"
-                                    className="btn text-white btn-error"
+                                    className="btn text-white btn-error hover:bg-[#E74C3C]"
                                     onClick={() => setSelectedSubmission(null)}
                                 >
                                     Close

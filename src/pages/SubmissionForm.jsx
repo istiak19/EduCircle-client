@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 
 const SubmissionForm = () => {
-    const { user } = useAuth()
+    const { user, isDarkMode } = useAuth()
     const { id } = useParams()
     const navigate = useNavigate()
     const [error, setError] = useState(null);
@@ -16,7 +16,7 @@ const SubmissionForm = () => {
         const link = form.get('link');
         const note = form.get('note');
         const formData = { assignment_id: id, link, note, submitted_email: user?.email, status: 'pending', my_marks: null, feedback: null, examinee_name: user?.displayName }
-        
+
         try {
             const { data } = await axios.post('https://server-omega-ten-52.vercel.app/assignment-submissions', formData)
             if (data.insertedId) {
@@ -38,7 +38,7 @@ const SubmissionForm = () => {
     if (error) return <p>{error}</p>
 
     return (
-        <div className="w-full max-w-lg my-10 mx-auto p-5 shadow-lg border rounded-lg">
+        <div className={`w-full max-w-lg my-10 mx-auto p-5 shadow-lg border rounded-lg ${isDarkMode ? 'bg-[#1D232A] text-white border-none' : 'bg-white text-gray-800'}`}>
             <h2 className="text-2xl font-bold mb-4 text-center">Submit Assignment</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
@@ -53,7 +53,7 @@ const SubmissionForm = () => {
                         id="link"
                         name="link"
                         placeholder="https://docs.google.com/document/d/..."
-                        className="input input-bordered w-full"
+                        className={`input input-bordered w-full ${isDarkMode?'bg-[#1D232A]':'bg-white'}`}
                         required
                     />
                 </div>
@@ -68,7 +68,7 @@ const SubmissionForm = () => {
                         id="note"
                         name="note"
                         placeholder="Write a quick note about your submission..."
-                        className="textarea textarea-bordered w-full"
+                        className={`textarea textarea-bordered w-full ${isDarkMode?'bg-[#1D232A]':'bg-white'}`}
                         rows="4"
                     ></textarea>
                 </div>

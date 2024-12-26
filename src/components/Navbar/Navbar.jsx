@@ -44,7 +44,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                        className={`menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-white'}`}>
                         {links}
                     </ul>
                 </div>
@@ -60,7 +60,7 @@ const Navbar = () => {
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className={`menu menu-horizontal px-1 ${isDarkMode && '*:text-gray-600 '}`}>
+                <ul className={`menu menu-horizontal px-1 ${isDarkMode && '*:text-white'}`}>
                     {links}
                 </ul>
             </div>
@@ -82,14 +82,19 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className={`menu menu-sm dropdown-content  rounded-box z-[1] mt-3 w-56 p-2 shadow ${isDarkMode? 'bg-[#1D232A] text-white':'bg-slate-100'}`}>
+                            className={`menu menu-sm dropdown-content  rounded-box z-[1] mt-3 w-56 p-2 shadow ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-slate-100'}`}>
                             <li><Link to='/CreateAssignments'>Create Assignments</Link></li>
                             <li><Link to='/myAttempted'>My Attempted Assignments</Link></li>
+                            <li className='sm:hidden'>
+                                {
+                                    user && <button onClick={handleSignOut} className={`btn-xs sm:hidden block font-medium ${isDarkMode ? 'text-white' : 'text-gray-700'}`}>Logout</button>
+                                }
+                            </li>
                         </ul>
                     </div>
                 }
                 {
-                    user ? <button onClick={handleSignOut} className="btn bg-[#3F9CFF] text-white font-semibold ml-3">Logout</button> : <Link to='/login' className="btn bg-[#3F9CFF] text-white font-semibold">Login</Link>
+                    user ? <button onClick={handleSignOut} className="btn hidden sm:block bg-[#3F9CFF] text-white font-semibold ml-3 hover:bg-blue-500">Logout</button> : <Link to='/login' className="btn bg-[#3F9CFF] text-white font-semibold hover:bg-blue-500">Login</Link>
                 }
             </div>
         </div>

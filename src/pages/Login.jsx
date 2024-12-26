@@ -50,7 +50,7 @@ const Login = () => {
 
 
     return (
-        <div className={`hero min-h-screen my-10 ${isDarkMode && 'bg-[#1D232A]'}`}>
+        <div className={`hero min-h-screen my-4 ${isDarkMode && 'bg-[#1D232A]'}`}>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <Lottie animationData={login}></Lottie>
