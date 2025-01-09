@@ -39,14 +39,14 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser)
             if (currentUser?.email) {
                 const user = { email: currentUser.email }
-                axios.post('https://server-omega-ten-52.vercel.app/jwt', user, { withCredentials: true })
+                axios.post('https://educircle-server.vercel.app/jwt', user, { withCredentials: true })
                     .then(res => {
                         // console.log(res.data);
                         setLoading(false)
                     })
             }
             else {
-                axios.post('https://server-omega-ten-52.vercel.app/logout', {}, { withCredentials: true })
+                axios.post('https://educircle-server.vercel.app/logout', {}, { withCredentials: true })
                     .then(res => {
                         // console.log(res.data)
                         setLoading(false)

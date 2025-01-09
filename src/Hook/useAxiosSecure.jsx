@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const axiosInstance = axios.create({
-    baseURL: 'https://server-omega-ten-52.vercel.app',
+    baseURL: 'https://educircle-server.vercel.app',
     withCredentials: true
 })
 const useAxiosSecure = () => {

@@ -52,7 +52,7 @@ const PendingAssignments = () => {
         const updateInfo = { my_marks, feedback, status: 'completed' }
         const id = selectedSubmission._id;
         try {
-            const { data } = await axiosSecure.put(`https://server-omega-ten-52.vercel.app/assignment-submission/${id}`, updateInfo)
+            const { data } = await axiosSecure.put(`https://educircle-server.vercel.app/assignment-submission/${id}`, updateInfo)
             // console.log(data)
             if (data.modifiedCount > 0) {
                 Swal.fire({

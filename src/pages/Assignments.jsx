@@ -14,7 +14,7 @@ const Assignments = () => {
     const { data: assignments, isError, isLoading } = useQuery({
         queryKey: ['assignments', filter, search],
         queryFn: async () => {
-            const { data } = await axios.get(`https://server-omega-ten-52.vercel.app/assignments?filter=${filter}&search=${search}`);
+            const { data } = await axios.get(`https://educircle-server.vercel.app/assignments?filter=${filter}&search=${search}`);
             return data;
         }
     });
