@@ -1,0 +1,30 @@
+[
+    {
+        "reviewId": 1,
+        "userName": "John Doe",
+        "rating": 5,
+        "reviewText": "The platform is excellent for managing group assignments! Peer grading and theme options are great additions.",
+        "timestamp": "2025-01-10T10:30:00Z"
+    },
+    {
+        "reviewId": 2,
+        "userName": "Jane Smith",
+        "rating": 4,
+        "reviewText": "Easy to use and promotes collaboration. Would love to see more customization features.",
+        "timestamp": "2025-01-09T14:15:00Z"
+    },
+    {
+        "reviewId": 3,
+        "userName": "Alex Brown",
+        "rating": 3,
+        "reviewText": "The platform is helpful, but I experienced some performance issues during peak hours.",
+        "timestamp": "2025-01-08T09:45:00Z"
+    },
+    {
+        "reviewId": 4,
+        "userName": "Emily White",
+        "rating": 5,
+        "reviewText": "Dark mode makes it easier to work at night. Great tool for group studies!",
+        "timestamp": "2025-01-07T11:00:00Z"
+    }
+]

@@ -84,22 +84,22 @@ const Card = ({ assignment }) => {
                     <span className="font-bold">Difficulty level: </span>
                     {level}
                 </p>
-                <div className="card-actions justify-between">
+                <div className="card-actions flex-col">
                     <button
                         onClick={() => handleDelete(_id, email)}
-                        className="btn text-white text-xs bg-[#3F9CFF] hover:bg-blue-400"
+                        className="btn border-none w-full btn-xs text-white text-xs bg-[#3F9CFF] hover:bg-blue-400"
                     >
                         Delete
                     </button>
                     <button
                         onClick={() => handleUpdateRedirecting(_id, email)}
-                        className="btn text-white text-xs bg-[#3F9CFF] hover:bg-blue-400"
+                        className="btn border-none btn-xs w-full text-white text-xs bg-[#3F9CFF] hover:bg-blue-400"
                     >
                         Update
                     </button>
                     <Link
                         to={`/details/${_id}`}
-                        className="btn text-white text-xs bg-[#3F9CFF] hover:bg-blue-400"
+                        className="btn border-none btn-xs w-full text-white text-xs bg-[#3F9CFF] hover:bg-blue-400"
                     >
                         View assignment
                     </Link>

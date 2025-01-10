@@ -14,7 +14,7 @@ import Slide from '../Slide';
 
 const Banner = () => {
     return (
-        <div className="container mx-auto">
+        <div className="">
             <Swiper
                 spaceBetween={30}
                  loop={true}
