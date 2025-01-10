@@ -76,27 +76,31 @@ const Card = ({ assignment }) => {
             </figure>
             <div className="space-y-2">
                 <h2 className="card-title">{title}</h2>
-                <p>
-                    <span className="font-bold">Marks: </span>
-                    {marks}
-                </p>
-                <p>
-                    <span className="font-bold">Difficulty level: </span>
-                    {level}
-                </p>
+                <div className="flex justify-between">
+                    <p>
+                        <span className="font-bold">Marks: </span>
+                        {marks}
+                    </p>
+                    <p>
+                        <span className="font-bold">Difficulty level: </span>
+                        {level}
+                    </p>
+                </div>
                 <div className="card-actions flex-col">
-                    <button
-                        onClick={() => handleDelete(_id, email)}
-                        className="btn border-none w-full btn-xs text-white text-xs bg-[#3F9CFF] hover:bg-blue-400"
-                    >
-                        Delete
-                    </button>
-                    <button
-                        onClick={() => handleUpdateRedirecting(_id, email)}
-                        className="btn border-none btn-xs w-full text-white text-xs bg-[#3F9CFF] hover:bg-blue-400"
-                    >
-                        Update
-                    </button>
+                    <div className="flex gap-5">
+                        <button
+                            onClick={() => handleDelete(_id, email)}
+                            className="btn border-none w-full btn-xs text-white text-xs bg-[#3F9CFF] hover:bg-blue-400"
+                        >
+                            Delete
+                        </button>
+                        <button
+                            onClick={() => handleUpdateRedirecting(_id, email)}
+                            className="btn border-none btn-xs w-full text-white text-xs bg-[#3F9CFF] hover:bg-blue-400"
+                        >
+                            Update
+                        </button>
+                    </div>
                     <Link
                         to={`/details/${_id}`}
                         className="btn border-none btn-xs w-full text-white text-xs bg-[#3F9CFF] hover:bg-blue-400"

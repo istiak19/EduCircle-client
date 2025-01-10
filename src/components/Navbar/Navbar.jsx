@@ -13,10 +13,10 @@ const Navbar = () => {
             user && <li className='mr-2'><NavLink to='/pending-assignments'>Pending Assignments</NavLink></li>
         }
         {
-            user && <li><Link to='/CreateAssignments'>Create Assignments</Link></li>
+            user && <li><NavLink to='/CreateAssignments'>Create Assignments</NavLink></li>
         }
         {
-            user && <li><Link to='/myAttempted'>My Attempted Assignments</Link></li>
+            user && <li><NavLink to='/myAttempted'>My Attempted Assignments</NavLink></li>
         }
     </>
 

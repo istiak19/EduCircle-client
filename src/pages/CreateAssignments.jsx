@@ -150,7 +150,7 @@ const CreateAssignments = () => {
                     />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 justify-between w-full items-center gap-4">
                     <div>
                         <label htmlFor="difficulty" className="block text-sm font-medium mb-2">
                             Difficulty Level
