@@ -7,16 +7,16 @@ const Navbar = () => {
     const { user, signOutUser, isDarkMode, toggleTheme } = useAuth()
 
     const links = <>
-        <li className='mr-2'><NavLink to='/'>Home</NavLink></li>
-        <li className='mr-2'><NavLink to='/assignments'>Assignments</NavLink></li>
+        <li className='mr-2'><NavLink className={({ isActive }) => (isActive ? "!text-[#3F9CFF] font-bold" : `${isDarkMode?'text-white':'text-black'}`)} to='/'>Home</NavLink></li>
+        <li className='mr-2'><NavLink className={({ isActive }) => (isActive ? "!text-[#3F9CFF] font-bold" : `${isDarkMode?'text-white':'text-black'}`)} to='/assignments'>Assignments</NavLink></li>
         {
-            user && <li className='mr-2'><NavLink to='/pending-assignments'>Pending Assignments</NavLink></li>
+            user && <li className='mr-2'><NavLink className={({ isActive }) => (isActive ? "!text-[#3F9CFF] font-bold" : `${isDarkMode?'text-white':'text-black'}`)} to='/pending-assignments'>Pending Assignments</NavLink></li>
         }
         {
-            user && <li><NavLink to='/CreateAssignments'>Create Assignments</NavLink></li>
+            user && <li><NavLink className={({ isActive }) => (isActive ? "!text-[#3F9CFF] font-bold" : `${isDarkMode?'text-white':'text-black'}`)} to='/CreateAssignments'>Create Assignments</NavLink></li>
         }
         {
-            user && <li><NavLink to='/myAttempted'>My Attempted Assignments</NavLink></li>
+            user && <li><NavLink className={({ isActive }) => (isActive ? "!text-[#3F9CFF] font-bold" : `${isDarkMode?'text-white':'text-black'}`)} to='/myAttempted'>My Attempted Assignments</NavLink></li>
         }
     </>
 
@@ -31,7 +31,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className={`navbar backdrop-blur-lg z-50 sticky top-0 lg:px-14 py-2 sm:py-5 ${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-[#F2F2F2] text-gray-800'}`}>
+        <div className={`navbar backdrop-blur-3xl z-50 sticky top-0 lg:px-14 py-2 sm:py-5 ${isDarkMode ? 'bg-[#1D232A] text-white' : 'text-gray-800'}`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -100,7 +100,7 @@ const Navbar = () => {
                     </div>
                 }
                 {
-                    user ? <button onClick={handleSignOut} className="btn hidden sm:block bg-[#3F9CFF] text-white font-semibold ml-3 hover:bg-blue-500">Logout</button> : <Link to='/login' className="btn bg-[#3F9CFF] text-white font-semibold hover:bg-blue-500">Login</Link>
+                    user ? <button onClick={handleSignOut} className="btn hidden sm:block bg-[#3F9CFF] text-white font-medium ml-3 hover:bg-blue-500">Logout</button> : <Link to='/login' className="btn bg-[#3F9CFF] text-white font-medium hover:bg-blue-500">Login</Link>
                 }
             </div>
         </div>
