@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
 import { toast } from "react-toastify";
 import SocialAuth from "../components/Shared/SocialAuth";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
     const navigate = useNavigate()
@@ -58,6 +59,10 @@ const Register = () => {
 
     return (
         <div className="hero min-h-screen my-5">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Register - EduCircle</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <Lottie animationData={register}></Lottie>

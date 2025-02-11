@@ -10,7 +10,7 @@ const Home = () => {
         <div>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Home - EduCircle</title>
+                <title>EduCircle</title>
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
             <Banner></Banner>

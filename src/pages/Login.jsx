@@ -6,6 +6,7 @@ import { useState } from "react";
 import useAuth from "../Hook/useAuth";
 import { toast } from "react-toastify";
 import SocialAuth from "../components/Shared/SocialAuth";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
     const navigate = useNavigate()
@@ -51,6 +52,10 @@ const Login = () => {
 
     return (
         <div className={`hero min-h-screen my-4 ${isDarkMode && 'bg-[#1D232A]'}`}>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Login - EduCircle</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <Lottie animationData={login}></Lottie>
