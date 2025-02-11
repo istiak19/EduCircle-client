@@ -60,7 +60,7 @@ const Features = () => {
                                     className="w-20 h-20 mx-auto mb-3 rounded-md"
                                 />
                                 <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-                                <p className="text-sm text-gray-600">{feature.description}</p>
+                                <p className="text-sm text-justify text-gray-700">{feature.description}</p>
                             </div>
                         ))
                     }
@@ -77,7 +77,7 @@ const Features = () => {
                                     className="w-20 h-20 mx-auto mb-3 rounded-md"
                                 />
                                 <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-                                <p className="text-sm text-gray-600">{feature.description}</p>
+                                <p className="text-sm text-justify text-gray-700">{feature.description}</p>
                             </div>
                         ))
                     }

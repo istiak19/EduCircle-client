@@ -16,7 +16,7 @@ const FAQ = () => {
             </div>
             <div className={`${isDarkMode ? 'bg-[#1D232A] text-white' : 'bg-white text-gray-800'} hero`}>
                 <div className="hero-content flex-col gap-5 lg:flex-row">
-                    <div className="max-w-md p-3 border-[#3f9cff57] rounded-2xl border border-[#3F9CFF]shadow-2xl">
+                    <div className="max-w-md p-3 border-[#3f9cff57] rounded-2xl border border-[#3F9CFF] shadow-2xl">
                         <img
                             src="https://i.ibb.co.com/NTsVtmv/faq-concept-23-2148147094.jpg"
                             className="rounded-lg" />
