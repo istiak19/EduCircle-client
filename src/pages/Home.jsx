@@ -3,6 +3,7 @@ import Banner from "../components/Banner/Banner";
 import FAQ from "../components/FAQ";
 import Features from "../components/Features";
 import Reviews from "../components/Reviews/Reviews";
+import NewsletterForm from "../components/NewsletterForm/NewsletterForm";
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
             <Features></Features>
             <Reviews></Reviews>
             <FAQ></FAQ>
+            <NewsletterForm></NewsletterForm>
         </div>
     );
 };
