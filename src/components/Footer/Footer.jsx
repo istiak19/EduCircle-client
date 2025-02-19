@@ -30,11 +30,11 @@ const Footer = () => {
                         </Link>
 
                         <Link
-                            href='#'
+                            to='/CreateAssignments'
                             className='mx-4 text-sm transition-colors duration-300 hover:text-gray-500'
                             aria-label='Reddit'
                         >
-                            Teams
+                            Create Assignments
                         </Link>
 
                         <Link
